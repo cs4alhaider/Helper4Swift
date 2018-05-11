@@ -1,0 +1,16 @@
+PODS:
+  - Helper4Swift (0.1.0)
+
+DEPENDENCIES:
+  - Helper4Swift (from `../`)
+
+EXTERNAL SOURCES:
+  Helper4Swift:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Helper4Swift: afaace60c0acd7044b39ecb2bf7ef81cf178aee6
+
+PODFILE CHECKSUM: dc5c51548fb84699ed8fca0c2f97ae9b34e1bc84
+
+COCOAPODS: 1.5.0
