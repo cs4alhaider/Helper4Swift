@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public class Helper {
+public class Helper4Swift {
     
     
     
@@ -38,12 +38,23 @@ public class Helper {
     }
     
     
+    public static func getCurrentDateWithThisFormat(formatToUse: String) -> String {
+        
+        let theDate = Date()
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = formatToUse
+        let formatedDate = formatter.string(from:theDate)
+        
+        return formatedDate
+    }
+    
     /****************************************************************************************************/
     /****************************************************************************************************/
     
     
     /*
-     - This method is to format numbers like Arabic numbers to EN number and so on with othen languages ...
+     - This method is to format numbers like Arabic numbers to EN number and so on with other languages ..
      - You can call it anywhere like this -->> Helper.formatThisNumber(stringNumber: stringNumber)
      */
     public static func formatThisNumber(stringNumber: String) -> String {

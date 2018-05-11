@@ -10,6 +10,10 @@ import Foundation
 public extension String {
     
     
+    /***********************************************************************************/
+    /***********************************************************************************/
+    
+    /* ------------ Test any reg on => https://www.regextester.com ------------- */
     
     // This helps you when creating sign up page
     public var isValidEmail: Bool {
@@ -24,11 +28,22 @@ public extension String {
         return numberPredicate.evaluate(with: self)
     }
     
+    public var isValidPassword: Bool {
+        // Minimum 8 characters, at least one uppercase letter, one lowercase letter and one number:
+        // You can see more on http://regexlib.com/Search.aspx?k=password
+        let passwordFormat = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$"
+        let passwordPredicate = NSPredicate(format:"SELF MATCHES %@", passwordFormat)
+        return passwordPredicate.evaluate(with: self)
+    }
+    
+    
+    public var isValidUrl: Bool {
+        return URL(string: self) != nil
+    }
     
     
     /***********************************************************************************/
     /***********************************************************************************/
-    
     
     
     
@@ -40,7 +55,6 @@ public extension String {
     public func removeWhitespace() -> String {
         return self.replace(string: " ", replacement: "")
     }
-    
     
     
     /***********************************************************************************/

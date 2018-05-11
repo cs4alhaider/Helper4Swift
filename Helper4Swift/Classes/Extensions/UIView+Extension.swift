@@ -37,7 +37,7 @@ public extension UIView {
     
     
     // OUTPUT 1
-    public func dropShadow(scale: Bool = true) {
+    public func applyViewDesign() {
         layer.masksToBounds = false
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.5
@@ -50,16 +50,22 @@ public extension UIView {
     }
     
     // OUTPUT 2
-    public func dropShadow(color: UIColor, cornerRadius: CGFloat, opacity: Float = 0.5, offSet: CGSize, radius: CGFloat /*, scale: Bool = true*/ ) {
-        layer.masksToBounds = false
-        layer.shadowColor = color.cgColor
-        layer.shadowOpacity = opacity
-        layer.shadowOffset = offSet
-        layer.shadowRadius = radius
-        layer.cornerRadius = cornerRadius
+    public func applyViewDesign(masksToBounds: Bool,
+                                color: UIColor,
+                                cornerRadius: CGFloat,
+                                opacity: Float = 0.5,
+                                offSet: CGSize,
+                                radius: CGFloat /*, scale: Bool = true*/ ) {
+        
+        self.layer.masksToBounds = masksToBounds // false
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOpacity = opacity
+        self.layer.shadowOffset = offSet
+        self.layer.shadowRadius = radius
+        self.layer.cornerRadius = cornerRadius
         
         //layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        layer.shouldRasterize = false
+        self.layer.shouldRasterize = false
         //layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
     

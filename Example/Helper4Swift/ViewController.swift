@@ -7,12 +7,21 @@
 //
 
 import UIKit
+import Helper4Swift
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        print(Helper4Swift.getCurrentDate(format: .MMMMddYYYYWithTime))
+        
+        let myName = "Abdulah Alhaider".isValidEmail
+        print(myName)
+        
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -9,13 +9,15 @@ import UIKit
 
 public extension UITextField {
     
-    public func addUnderlineDesign(){
+    public func addUnderlineDesign(borderColor: UIColor,
+                                   borderWidth: CGFloat,
+                                   masksToBounds: Bool) {
+        
         let border = CALayer()
-        let width = CGFloat(1.0)
-        border.borderColor = #colorLiteral(red: 0.9960784314, green: 1, blue: 0.9958750606, alpha: 1)
-        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width:  self.frame.size.width, height: self.frame.size.height)
-        border.borderWidth = width
+        border.borderColor = borderColor.cgColor
+        border.frame = CGRect(x: 0, y: self.frame.size.height - borderWidth, width:  self.frame.size.width, height: self.frame.size.height)
+        border.borderWidth = borderWidth
         self.layer.addSublayer(border)
-        self.layer.masksToBounds = true
+        self.layer.masksToBounds = masksToBounds
     }
 }
