@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Helper4Swift'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'Helpful extensions and methods to short your coding time.'
 
 # This description is used to generate tags and improve search results.
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 
   s.homepage         = 'https://github.com/cs4alhaider/Helper4Swift'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'cs4alhaider' => 'cs.alhaider@gmail.com' }
+  s.author           = { 'Abdullah Alhaider' => 'cs.alhaider@gmail.com' }
   s.source           = { :git => 'https://github.com/cs4alhaider/Helper4Swift.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/cs_alhaider'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
