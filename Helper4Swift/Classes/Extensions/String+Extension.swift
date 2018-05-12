@@ -36,7 +36,6 @@ public extension String {
         return passwordPredicate.evaluate(with: self)
     }
     
-    
     public var isValidUrl: Bool {
         return URL(string: self) != nil
     }

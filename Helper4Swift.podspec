@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Helper4Swift'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'Helpful extensions and methods to short your coding time.'
 
 # This description is used to generate tags and improve search results.

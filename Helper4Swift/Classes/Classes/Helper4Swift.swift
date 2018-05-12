@@ -1,5 +1,5 @@
 //
-//  Helper.swift
+//  Helper4Swift.swift
 //  Helper4Swift
 //
 //  Created by Abdullah Alhaider on 5/11/18.
@@ -75,6 +75,7 @@ public class Helper4Swift {
     
     
     public enum shakingType {
+        
         case light
         case medium
         case heavy
@@ -157,9 +158,9 @@ public class Helper4Swift {
     
     
     
-    public static func showBasicAlert(title: String, message: String, vc: UIViewController) {
+    public static func showBasicAlert(title: String, message: String, buttonTitle: String, vc: UIViewController) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: buttonTitle, style: .default, handler: nil))
         vc.present(alert, animated: true)
     }
     

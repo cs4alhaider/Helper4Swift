@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		00571E0D384E02FF8D38838A6C5C15BA /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525AAA291C060D46946EF995FB95215E /* UITextField+Extension.swift */; };
 		012EA87D4E78401E1966A7EBDD8173EA /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D375896F926D33B6C21CC39FA27BBF91 /* UIView+Extension.swift */; };
-		03014AEEE7E77570BA84019CC0BA21B2 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E627EF8DE1F26477378AD07E3BD3E2C /* Helper.swift */; };
+		03014AEEE7E77570BA84019CC0BA21B2 /* Helper4Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E627EF8DE1F26477378AD07E3BD3E2C /* Helper4Swift.swift */; };
 		0A90FD8796449292065D33BAF83A9369 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACB34A78576F0C39A6010B9B9974BEC /* String+Extension.swift */; };
 		1D2D02A671CC6705F8DEA68E6F77562D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */; };
 		1EAE57C3989692C868CDFE3A34F6C4BB /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C2F96EF2EA0E87155A6B8D0137A190 /* UIImageView+Extension.swift */; };
@@ -54,7 +54,7 @@
 		2A0282280101EA5DE48E1FC53C0C12F5 /* Pods-Helper4Swift_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Helper4Swift_Example-frameworks.sh"; sourceTree = "<group>"; };
 		2ED99341BB781A96402591AF8B9F35DC /* Pods-Helper4Swift_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Helper4Swift_Example.release.xcconfig"; sourceTree = "<group>"; };
 		458A3954EB26E2569F30E8E3D24178E1 /* Pods-Helper4Swift_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Helper4Swift_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4E627EF8DE1F26477378AD07E3BD3E2C /* Helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		4E627EF8DE1F26477378AD07E3BD3E2C /* Helper4Swift.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Helper4Swift.swift; sourceTree = "<group>"; };
 		525AAA291C060D46946EF995FB95215E /* UITextField+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		580776B83F25E874921BA49FC05EDF4E /* Pods-Helper4Swift_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Helper4Swift_Tests-umbrella.h"; sourceTree = "<group>"; };
 		73BA5823571C2B15D247E9F7AFFE7AB7 /* Helper4Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Helper4Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,7 +174,7 @@
 		4599A3E0C6A4A15CC2481F8DAF6A2BB0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4E627EF8DE1F26477378AD07E3BD3E2C /* Helper.swift */,
+				4E627EF8DE1F26477378AD07E3BD3E2C /* Helper4Swift.swift */,
 			);
 			name = Classes;
 			path = Helper4Swift/Classes/Classes;
@@ -386,7 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03014AEEE7E77570BA84019CC0BA21B2 /* Helper.swift in Sources */,
+				03014AEEE7E77570BA84019CC0BA21B2 /* Helper4Swift.swift in Sources */,
 				D7AD3ADBB16F50537D2863CD8E7F0036 /* Helper4Swift-dummy.m in Sources */,
 				0A90FD8796449292065D33BAF83A9369 /* String+Extension.swift in Sources */,
 				F24D935709BE42434DAC46609587DC8A /* UIColor+Extension.swift in Sources */,
