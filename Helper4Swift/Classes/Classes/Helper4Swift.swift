@@ -158,7 +158,7 @@ public class Helper4Swift {
     
     
     
-    public static func showBasicAlert(title: String, message: String, buttonTitle: String, vc: UIViewController) {
+    public static func showBasicAlert(title: String?, message: String?, buttonTitle: String?, vc: UIViewController) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: buttonTitle, style: .default, handler: nil))
         vc.present(alert, animated: true)

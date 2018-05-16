@@ -22,6 +22,25 @@ public extension String {
         return emailPredicate.evaluate(with: self)
     }
     
+    
+    /**
+     isValidNumber.
+     
+     *Values*
+     
+     `numberFormat` Passing a regulare xpression string like "^[0-9]*$".
+     
+     `numberPredicate` NSPredicate.
+     
+     - important: Regular expression is case sensitive.
+     
+     - returns: True
+     
+     
+     - By:
+     Abdullah Alhaider
+     
+     */
     public var isValidNumber: Bool {
         let numberFormat = "^[0-9]*$"
         let numberPredicate = NSPredicate(format:"SELF MATCHES %@", numberFormat)
