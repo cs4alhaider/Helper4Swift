@@ -15,6 +15,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		C37657DA788DB37392CDC679 /* Pods_Helper4Swift_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D5224E3007287B3DEFF268 /* Pods_Helper4Swift_Tests.framework */; };
+		E893E40C20D7DA1C000B0FB0 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E893E40B20D7DA1C000B0FB0 /* Coin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		7F756D62DDE21FE646E868C9 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B7C49352D8CFE9C67BB767F5 /* Pods-Helper4Swift_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Helper4Swift_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Helper4Swift_Example/Pods-Helper4Swift_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		CB935DCD8D8F22B9A746385C /* Pods-Helper4Swift_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Helper4Swift_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Helper4Swift_Tests/Pods-Helper4Swift_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		E893E40B20D7DA1C000B0FB0 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		F3D5224E3007287B3DEFF268 /* Pods_Helper4Swift_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Helper4Swift_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -114,10 +116,10 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				607FACD91AFB9204008FA782 /* Main.storyboard */,
+				E893089020D7DA68001A9789 /* Model */,
+				E893089120D7DA74001A9789 /* View */,
+				E893089220D7DA82001A9789 /* Controller */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
-				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for Helper4Swift";
@@ -157,6 +159,31 @@
 				7F756D62DDE21FE646E868C9 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		E893089020D7DA68001A9789 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E893E40B20D7DA1C000B0FB0 /* Coin.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E893089120D7DA74001A9789 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				607FACD91AFB9204008FA782 /* Main.storyboard */,
+				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		E893089220D7DA82001A9789 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				607FACD71AFB9204008FA782 /* ViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E893E40C20D7DA1C000B0FB0 /* Coin.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);

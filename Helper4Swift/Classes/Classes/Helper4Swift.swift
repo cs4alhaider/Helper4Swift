@@ -21,7 +21,7 @@ public class Helper4Swift {
      - Author: Abdullah Alhaider
      */
     
-    public func fetchGenericData<Model: Decodable>(urlString: String, completion: @escaping (Model) -> ()) {
+    public static func fetchGenericData<Model: Decodable>(urlString: String, completion: @escaping (Model) -> ()) {
         
         let url = URL(string: urlString)
         URLSession.shared.dataTask(with: url!) { (data, resp, err) in

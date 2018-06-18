@@ -11,22 +11,25 @@ import Helper4Swift
 
 class ViewController: UIViewController {
 
+    
+    let myName = "abc@gmail.com"
+    let jsonURL = "https://api.coinmarketcap.com/v1/ticker/"
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fetchData()
         print(Helper4Swift.getCurrentDate(format: .MMMMddYYYYWithTime))
-        
-        let myName = "Abdulah Alhaider"
         print(myName.isValidEmail)
-        
-        
-        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func fetchData(){
+        Helper4Swift.fetchGenericData(urlString: jsonURL) { (coin: [Coin]) in
+            coin.forEach({print($0.symbol!)})
+        }
     }
-
-}
+    
+}// class
 
