@@ -3,7 +3,7 @@
 //  Helper4Swift
 //
 //  Created by Abdullah Alhaider on 5/11/18.
-//
+//  https://developer.apple.com/library/content/documentation/Xcode/Reference/xcode_markup_formatting_ref/
 
 import Foundation
 import UIKit
@@ -12,9 +12,34 @@ public class Helper4Swift {
     
     
     
-    /****************************************************************************************************/
-    /****************************************************************************************************/
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
     
+    /**
+     Fetching json data by passing the struct/class model and the urlString. "Good Solution to Eliminate Code Duplication!"
+     - Author: Abdullah Alhaider
+     */
+    
+    public func fetchGenericData<Model: Decodable>(urlString: String, completion: @escaping (Model) -> ()) {
+        
+        let url = URL(string: urlString)
+        URLSession.shared.dataTask(with: url!) { (data, resp, err) in
+            guard let data = data else { return }
+            do {
+                let object = try JSONDecoder().decode(Model.self, from: data)
+                completion(object)
+            } catch let jsonErr {
+                print("Faild to decode json data : \(jsonErr)")
+            }
+        }.resume()
+    }
+    
+    
+    
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
     
     public enum dateFormat: String {
         case MMMMddYYYYWithTime = "MMMM dd, yyyy 'at' h:mm a"
@@ -49,13 +74,14 @@ public class Helper4Swift {
         return formatedDate
     }
     
-    /****************************************************************************************************/
-    /****************************************************************************************************/
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
     
     
-    /*
-     - This method is to format numbers like Arabic numbers to EN number and so on with other languages ..
-     - You can call it anywhere like this -->> Helper.formatThisNumber(stringNumber: stringNumber)
+    /**
+     This method is to format numbers like Arabic numbers to EN numbers and so on with other languages ..
+     - Author: Abdullah Alhaider
      */
     public static func formatThisNumber(stringNumber: String) -> String {
         
@@ -70,8 +96,9 @@ public class Helper4Swift {
     }
     
     
-    /****************************************************************************************************/
-    /****************************************************************************************************/
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
     
     
     public enum shakingType {
@@ -121,8 +148,9 @@ public class Helper4Swift {
     }
     
     
-    /****************************************************************************************************/
-    /****************************************************************************************************/
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
     
     
     
@@ -153,9 +181,36 @@ public class Helper4Swift {
     
     
     
-    /****************************************************************************************************/
-    /****************************************************************************************************/
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
     
+    
+    
+    @objc func dismissKeyboard(thisView: UIView){
+        thisView.endEditing(true)
+    }
+    
+    
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
+    
+    
+    func toolBar(buttonTitle: String, textField: UITextField){
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let done = UIBarButtonItem(title: buttonTitle, style: .done, target: nil, action: #selector(Helper4Swift.dismissKeyboard))
+        toolbar.setItems([done], animated: true)
+        
+        textField.inputAccessoryView = toolbar
+    }
+    
+    
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
     
     
     public static func showBasicAlert(title: String?, message: String?, buttonTitle: String?, vc: UIViewController) {

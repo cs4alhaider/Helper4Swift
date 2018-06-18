@@ -16,9 +16,8 @@ class ViewController: UIViewController {
         
         print(Helper4Swift.getCurrentDate(format: .MMMMddYYYYWithTime))
         
-        let myName = "Abdulah Alhaider".isValidEmail
-        print(myName)
-        
+        let myName = "Abdulah Alhaider"
+        print(myName.isValidEmail)
         
         
         

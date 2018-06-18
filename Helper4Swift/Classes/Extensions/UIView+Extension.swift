@@ -32,48 +32,33 @@ public extension UIView {
     
     
     
-    /**********************************************************************************************/
-    /**********************************************************************************************/
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
     
-    
-    // OUTPUT 1
-    public func applyViewDesign() {
-        layer.masksToBounds = false
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.5
-        layer.shadowOffset = CGSize(width: 0, height: 0)
-        layer.shadowRadius = 13
-        layer.cornerRadius = 15
-        //layer.shadowPath = UIBezierPath(rect: bounds).cgPath
-        //layer.shouldRasterize = true
-        //layer.rasterizationScale = scale ? UIScreen.main.scale : 1
-    }
-    
-    // OUTPUT 2
-    public func applyViewDesign(masksToBounds: Bool,
-                                color: UIColor,
-                                cornerRadius: CGFloat,
-                                opacity: Float = 0.5,
-                                offSet: CGSize,
-                                radius: CGFloat /*, scale: Bool = true*/ ) {
+    public func applyViewDesign(masksToBounds: Bool = false,
+                                shadowColor: UIColor = .black,
+                                cornerRadius: CGFloat = 0.0,
+                                shadowOpacity: Float = 0.0,
+                                shadowOffset: CGSize = CGSize(width: 0, height: 0),
+                                shadowRadius: CGFloat = 0.0) {
         
-        self.layer.masksToBounds = masksToBounds // false
-        self.layer.shadowColor = color.cgColor
-        self.layer.shadowOpacity = opacity
-        self.layer.shadowOffset = offSet
-        self.layer.shadowRadius = radius
+        self.layer.masksToBounds = masksToBounds
+        self.layer.shadowColor = shadowColor.cgColor
+        self.layer.shadowOpacity = shadowOpacity
+        self.layer.shadowOffset = shadowOffset
+        self.layer.shadowRadius = shadowRadius
         self.layer.cornerRadius = cornerRadius
-        
-        //layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        //self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         self.layer.shouldRasterize = false
-        //layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+        //self.layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
     
     
     
-    /**********************************************************************************************/
-    /**********************************************************************************************/
-    
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
     
     
 }

@@ -23,6 +23,8 @@
 		D7AD3ADBB16F50537D2863CD8E7F0036 /* Helper4Swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E52C16D92C8B3F768FBCCEAFC9618C21 /* Helper4Swift-dummy.m */; };
 		D7F033AB5CD39AE8833535F8B27BEEC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
 		E82A04FF20A62C56006D4FE1 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82A04FE20A62C56006D4FE1 /* UIButton+Extension.swift */; };
+		E893E40820D7D128000B0FB0 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E893E40720D7D128000B0FB0 /* UILabel+Extension.swift */; };
+		E893E40A20D7D388000B0FB0 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E893E40920D7D388000B0FB0 /* Array+Extension.swift */; };
 		EF5FFAD16CC4F0646D75A9922E3BF508 /* Helper4Swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 145D54E9FFB67AE4F958966666A4DF6F /* Helper4Swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F24D935709BE42434DAC46609587DC8A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402BB4F1DB981A9E3D3BB3E78CCC432 /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +89,8 @@
 		E52C16D92C8B3F768FBCCEAFC9618C21 /* Helper4Swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Helper4Swift-dummy.m"; sourceTree = "<group>"; };
 		E7BF8F9B44D2606C20922A8364160F26 /* Pods-Helper4Swift_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Helper4Swift_Tests-resources.sh"; sourceTree = "<group>"; };
 		E82A04FE20A62C56006D4FE1 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		E893E40720D7D128000B0FB0 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		E893E40920D7D388000B0FB0 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		F28037FDD86D948C12B98B164D2FF9AC /* Pods-Helper4Swift_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Helper4Swift_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +143,8 @@
 				525AAA291C060D46946EF995FB95215E /* UITextField+Extension.swift */,
 				D375896F926D33B6C21CC39FA27BBF91 /* UIView+Extension.swift */,
 				E82A04FE20A62C56006D4FE1 /* UIButton+Extension.swift */,
+				E893E40720D7D128000B0FB0 /* UILabel+Extension.swift */,
+				E893E40920D7D388000B0FB0 /* Array+Extension.swift */,
 			);
 			name = Extensions;
 			path = Helper4Swift/Classes/Extensions;
@@ -360,7 +366,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 0940;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -388,6 +394,8 @@
 			files = (
 				03014AEEE7E77570BA84019CC0BA21B2 /* Helper4Swift.swift in Sources */,
 				D7AD3ADBB16F50537D2863CD8E7F0036 /* Helper4Swift-dummy.m in Sources */,
+				E893E40820D7D128000B0FB0 /* UILabel+Extension.swift in Sources */,
+				E893E40A20D7D388000B0FB0 /* Array+Extension.swift in Sources */,
 				0A90FD8796449292065D33BAF83A9369 /* String+Extension.swift in Sources */,
 				F24D935709BE42434DAC46609587DC8A /* UIColor+Extension.swift in Sources */,
 				9F727106A967762702560E8104032E28 /* UIDevice+Extension.swift in Sources */,
@@ -718,6 +726,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;

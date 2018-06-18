@@ -8,7 +8,7 @@
 import UIKit
 
 
-extension UIButton {
+public extension UIButton {
     
     
     public func roundedButton(){
@@ -16,19 +16,18 @@ extension UIButton {
     }
     
     
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
     
-    /**********************************************************************************************/
-    /**********************************************************************************************/
     
-    
-    
-    public func applyButtonDesign(title: String,
-                     titleColor: UIColor,
-                     cornerRadius:CGFloat,
-                     backgroundColor: UIColor,
-                     shadowColor: UIColor,
-                     shadowRadius: CGFloat,
-                     shadowOpacity:Float) {
+    public func applyButtonDesign(title: String = "Button",
+                     titleColor: UIColor = .white,
+                     cornerRadius: CGFloat = 0.0,
+                     backgroundColor: UIColor = .blue,
+                     shadowColor: UIColor = .black,
+                     shadowRadius: CGFloat = 0.0,
+                     shadowOpacity: Float = 0.0) {
         
         self.setTitle(title, for: .normal)
         self.setTitleColor(titleColor, for: .normal)
