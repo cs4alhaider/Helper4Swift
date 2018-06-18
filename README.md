@@ -24,55 +24,82 @@ pod 'Helper4Swift'
 ```
 
 ## Classes folder contain :
-- [Helper](#helper)
+- [Helper4Swift](#helper4swift)
 
 ## Extensions folder contains :
-  - [String Extensions](#string-extensions)
-  - [UIDevice Extensions](#uidevice-extensions)
-  - [UITextField Extensions](#uitextfield-extensions)
-  - [UIView Extensions](#uiview-extensions)
-  - [UIImageView Extensions](#uiimageview-extensions)
-  - [UIColor Extensions](#uicolor-extensions)
+  - [String Extension](#string-extension)
+  - [Array Extension](#array-extension)
+  - [UIButton Extension](#uibutton-extension)
+  - [UILabel Extension](#uilabel-extension)
+  - [UIDevice Extension](#uidevice-extension)
+  - [UITextField Extension](#uitextfield-extension)
+  - [UIView Extension](#uiview-extension)
+  - [UIImageView Extension](#uiimageview-extension)
+  - [UIColor Extension](#uicolor-extension)
+ 
+  
   
 <br />
 
-### Helper
-- [x] getDate method  ``` // return the current date in different format ```
+### Helper4Swift
+
+- [x] fetchGenericData method  ``` // fetching json data by passing the struct/class model and the url ```
+- [x] getCurrentDate method  ``` // return the current date in different format ```
+- [x] getCurrentDateWithThisFormat method  ``` // return the current date with specific format ```
 - [x] formatThisNumber method  ``` // takes string numbers (e.g Arabic numbers) and return string english numbers ```
 - [x] shakePhone method  ``` // all kinds of UIImpactFeedbackGenerator .light .medium etc.. ```
 - [x] disabledForSome method  ``` // take control of what to show/hide for specific iOS devices ```
+- [x] toolBar method  ``` // adding toolbar to a textField ```
 - [x] showBasicAlert method  ``` // showing basic alert with title and message and OK button to dissmiss ```
 
 <br />
 
 ### Extensions
 
-#### String Extensions 
+#### String Extension 
 - [x] isValidEmail  ``` // return true if the email match the regular expression (helful when adding sign up page)```
 - [x] isValidNumber  ``` // return true if the number match the regular expression ```
+- [x] isValidPassword  ``` // return true if the string has minimum 8 characters, and at least one uppercase letter, and one lowercase letter and one number ```
+- [x] isValidUrl  ``` // return true if string is valid Url ```
 - [x] removeWhitespace method  ``` // removing the white space form string ```
+- [x] replaceString  ``` // Replacing string by another string ```
 
-#### UIDevice Extensions
+#### Array Extension
+- [x] shuffle method  ``` // returns an array containing this sequence shuffled```
+
+#### UIButton Extension
+- [x] applyButtonDesign method  ``` // adding a shadow and other design ```
+
+#### UILabel Extension
+- [x] setLineSpacing method  ``` // adding a space between the lines ```
+
+#### UIDevice Extension
 - [x] modelName  ``` // determines the current iOS device model ```
 
-#### UITextField Extensions
-- [x] addUnderlineDesign method  ``` // adds Underline Design to UITextField ```
+#### UITextField Extension
+- [x] addUnderlineDesign method  ``` // adding underline Design to UITextField ```
 
-#### UIView Extensions
+#### UIView Extension
 - [x] addVerticalGradientLayer method  ``` // adds a vertical gradient layer with two UIColors to the UIView ```
-- [x] dropShadow method  ``` // drop a shadow to the UIView ```
+- [x] applyViewDesign method  ``` // like drop a shadow to the UIView ```
 
-#### UIImageView Extensions
+#### UIImageView Extension
 - [x] downloadedFrom method  ``` // downloads an image asynchronously from the web using URLSession```
 
-#### UIColor Extensions
+#### UIColor Extension
 - [x] colorFromHexString method  ``` // return UIColor from a given hex string color```
+
+
 
 
 
 ## Author
 
-Abdullah Alhaider, cs.alhaider@gmail.com
+Abdullah Alhaider, 
+<br />
+cs.alhaider@gmail.com
+<br />
+[Twitter](https://twitter.com/cs_alhaider)
 
 ## License
 
