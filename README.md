@@ -1,6 +1,5 @@
 # Helper4Swift
 
-[![CI Status](https://img.shields.io/travis/cs4alhaider/Helper4Swift.svg?style=flat)](https://travis-ci.org/cs4alhaider/Helper4Swift)
 [![Version](https://img.shields.io/cocoapods/v/Helper4Swift.svg?style=flat)](https://cocoapods.org/pods/Helper4Swift)
 [![License](https://img.shields.io/cocoapods/l/Helper4Swift.svg?style=flat)](https://cocoapods.org/pods/Helper4Swift)
 [![Platform](https://img.shields.io/cocoapods/p/Helper4Swift.svg?style=flat)](https://cocoapods.org/pods/Helper4Swift)
@@ -36,7 +35,9 @@ pod 'Helper4Swift'
   - [UIView Extension](#uiview-extension)
   - [UIImageView Extension](#uiimageview-extension)
   - [UIColor Extension](#uicolor-extension)
- 
+  - [UITabBarController Extension](#uitabbarcontroller-extension)
+  - [UIViewController Extension](#uiviewcontroller-extension)
+
   
   
 <br />
@@ -89,7 +90,9 @@ pod 'Helper4Swift'
 #### UIColor Extension
 - [x] colorFromHexString method  ``` // return UIColor from a given hex string color```
 
+#### UITabBarController Extension
 
+#### UIViewController Extension
 
 
 
