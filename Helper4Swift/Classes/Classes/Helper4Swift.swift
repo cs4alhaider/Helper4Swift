@@ -8,13 +8,32 @@
 import Foundation
 import UIKit
 
+
+public protocol Helper4SwiftDelegate {
+    func didUserTakeScreenshot()
+}
+
+
 public class Helper4Swift {
     
+    public var delegate: Helper4SwiftDelegate?
+    
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
     
     
+    /// Tells the delegate when the user take a screenshot
+    public func screenshot() {
+        NotificationCenter.default.addObserver(forName: .UIApplicationUserDidTakeScreenshot, object: nil, queue: OperationQueue.main) { notification in
+            self.delegate?.didUserTakeScreenshot()
+        }
+    }
+    
     /* -------------------------------------------------------------------------------- */
     /* -------------------------------------------------------------------------------- */
     /* -------------------------------------------------------------------------------- */
+    
     
     /**
      Fetching json data by passing the struct/class model and the urlString. "Good Solution to Eliminate Code Duplication!"

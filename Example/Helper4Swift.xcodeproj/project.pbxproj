@@ -9,13 +9,16 @@
 /* Begin PBXBuildFile section */
 		45864C1333C40B6905EAB501 /* Pods_Helper4Swift_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDB397EC1C4B080B8A7CE94 /* Pods_Helper4Swift_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
+		607FACD81AFB9204008FA782 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* FirstViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		C37657DA788DB37392CDC679 /* Pods_Helper4Swift_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D5224E3007287B3DEFF268 /* Pods_Helper4Swift_Tests.framework */; };
 		E893E40C20D7DA1C000B0FB0 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E893E40B20D7DA1C000B0FB0 /* Coin.swift */; };
+		E8D637072131DACA00FCF60B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D637062131DACA00FCF60B /* TabBarController.swift */; };
+		E8D637092131DBB600FCF60B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D637082131DBB600FCF60B /* SecondViewController.swift */; };
+		E8D6370F213202FB00FCF60B /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6370E213202FB00FCF60B /* AppColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,7 @@
 		607FACD01AFB9204008FA782 /* Helper4Swift_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Helper4Swift_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		607FACD71AFB9204008FA782 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -48,6 +51,9 @@
 		B7C49352D8CFE9C67BB767F5 /* Pods-Helper4Swift_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Helper4Swift_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Helper4Swift_Example/Pods-Helper4Swift_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		CB935DCD8D8F22B9A746385C /* Pods-Helper4Swift_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Helper4Swift_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Helper4Swift_Tests/Pods-Helper4Swift_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E893E40B20D7DA1C000B0FB0 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
+		E8D637062131DACA00FCF60B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		E8D637082131DBB600FCF60B /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		E8D6370E213202FB00FCF60B /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		F3D5224E3007287B3DEFF268 /* Pods_Helper4Swift_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Helper4Swift_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -165,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				E893E40B20D7DA1C000B0FB0 /* Coin.swift */,
+				E8D6370E213202FB00FCF60B /* AppColors.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -181,7 +188,9 @@
 		E893089220D7DA82001A9789 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				E8D637062131DACA00FCF60B /* TabBarController.swift */,
+				607FACD71AFB9204008FA782 /* FirstViewController.swift */,
+				E8D637082131DBB600FCF60B /* SecondViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -352,7 +361,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E893E40C20D7DA1C000B0FB0 /* Coin.swift in Sources */,
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				E8D637072131DACA00FCF60B /* TabBarController.swift in Sources */,
+				607FACD81AFB9204008FA782 /* FirstViewController.swift in Sources */,
+				E8D6370F213202FB00FCF60B /* AppColors.swift in Sources */,
+				E8D637092131DBB600FCF60B /* SecondViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

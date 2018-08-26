@@ -1,5 +1,5 @@
 PODS:
-  - Helper4Swift (0.1.1)
+  - Helper4Swift (0.1.5)
 
 DEPENDENCIES:
   - Helper4Swift (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Helper4Swift: 67e63117c4f5f85940807bdda1c14fb10fda5e5e
+  Helper4Swift: 7a9ce67488b32a7ce382669ea51ad539d799155c
 
 PODFILE CHECKSUM: dc5c51548fb84699ed8fca0c2f97ae9b34e1bc84
 

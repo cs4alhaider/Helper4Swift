@@ -9,7 +9,12 @@ import UIKit
 
 public extension UIColor {
     
+    /// setting a color from hexadecimal string
+    ///
+    /// - Parameter hex: hexadecimal string
+    /// - Returns: UIColor from hexadecimal string
     public func colorFromHexString (_ hex:String) -> UIColor {
+        
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
         if (cString.hasPrefix("#")) {

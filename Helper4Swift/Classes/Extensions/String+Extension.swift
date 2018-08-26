@@ -17,6 +17,21 @@ public extension String {
     /* -------------------------------------------------------------------------------- */
     
     
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
+    
+    var asImage: UIImage {
+        return UIImage(named: self) ?? UIImage()
+    }
+    
+    /// Checking if string is empty and does not contain white spaces
+    var isEmptyAtAll: Bool {
+        if self.isEmpty && !isWhiteSpaceOnly {
+            return true
+        }
+        return false
+    }
     
     /* -------------------------------------------------------------------------------- */
     /* -- Learn about regular expression in => https://www.regexbuddy.com/regex.html -- */
@@ -105,6 +120,29 @@ public extension String {
         return URL(string: self) != nil
     }
     
+    
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
+    
+    public var isWhiteSpaceOnly: Bool {
+        if self.isEmpty {
+            return false
+        }
+        let emptyFormat = "\\s*"
+        let emptyPerdicate = NSPredicate(format:"SELF MATCHES %@", emptyFormat)
+        return emptyPerdicate.evaluate(with: self)
+    }
+    
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------------- */
+    
+    public var isStringOnlyZeros: Bool {
+        let ZeroFormat = "^[0٠]+$"
+        let ZeroPerdicate = NSPredicate(format:"SELF MATCHES %@", ZeroFormat)
+        return ZeroPerdicate.evaluate(with: self)
+    }
     
     /* -------------------------------------------------------------------------------- */
     /* -------------------------------------------------------------------------------- */

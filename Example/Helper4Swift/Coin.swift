@@ -9,7 +9,7 @@
 import Foundation
 
 struct Coin: Codable {
-    let symbol : String?
-    let price_usd : String?
+    var symbol : String?
+    var price_usd : String?
     var percent_change_7d : String?
 }
