@@ -10,7 +10,17 @@ import UIKit
 public extension UIViewController {
     
     
-    /// show an alert with title, message and one button
+    /// changing the back bar button title and color for subViewControllers
+    ///
+    /// - Parameter stringToUse: back bar button title
+    public func setBackButtonTitle(_ stringToUse: String){
+        let titleToSet = stringToUse
+        let bacButton = UIBarButtonItem(title: titleToSet, style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = bacButton
+    }
+    
+    
+    /// shows an alert with title, message and one button
     ///
     /// - Parameters:
     ///   - title: title to set
@@ -28,7 +38,7 @@ public extension UIViewController {
     }
     
     
-    /// show an alert with title, message and two buttons
+    /// shows an alert with title, message and two buttons
     ///
     /// - Parameters:
     ///   - title: title to set

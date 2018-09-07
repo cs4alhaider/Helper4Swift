@@ -15,12 +15,9 @@ import UIKit
 
 public extension UIImageView {
     
-    
-    
     /* -------------------------------------------------------------------------------- */
     /* -------------------------------------------------------------------------------- */
     /* -------------------------------------------------------------------------------- */
-    
     
     public func downloadedFrom(url: URL, contentMode mode: UIViewContentMode) {
         contentMode = mode
@@ -49,11 +46,9 @@ public extension UIImageView {
      - imageView.downloadedFrom(link: "https://cn.pling.com/img/b/7/1/7/e105204712dfa5ed2b3f17254d561ce261fd.jpg", contentMode: .scaleAspectFill)
      */
     
-    
     /* -------------------------------------------------------------------------------- */
     /* -------------------------------------------------------------------------------- */
     /* -------------------------------------------------------------------------------- */
-    
     
     public func applyImageDesgin(clipsToBounds: Bool,
                                  cornerRadius: CGFloat,
@@ -66,7 +61,4 @@ public extension UIImageView {
         self.layer.borderColor = borderColor.cgColor
     }
     
-    
 }// extension end.
-
-

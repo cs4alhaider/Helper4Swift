@@ -26,6 +26,8 @@
 		C9523BEBFD5CC56E07260A28DBC9FBE5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */; };
 		D7F033AB5CD39AE8833535F8B27BEEC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
 		DFC7C623A70E46520B1BF7CF12FF6C4C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870CE78FAC3A93DCAC11A724BF664445 /* UIButton+Extension.swift */; };
+		E87A3E7A214231A800EBEC3D /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87A3E79214231A800EBEC3D /* CALayer+Extension.swift */; };
+		E87A3E7C2142332D00EBEC3D /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87A3E7B2142332D00EBEC3D /* UIImage+Extension.swift */; };
 		E8D6370D2131F31E00FCF60B /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6370C2131F31E00FCF60B /* UITabBarController+Extension.swift */; };
 		E8D6371321320DC600FCF60B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6371221320DC600FCF60B /* UIViewController+Extension.swift */; };
 		F3031E8E80C26E31AA44B349C8A3A3EC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83794374681AB771F424D0461E7472FD /* UIColor+Extension.swift */; };
@@ -91,6 +93,8 @@
 		DEE2B0840A46B0D498B1015DEC0CBF63 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3E8D4586626C51A6098DA4C567A08E1 /* Helper4Swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Helper4Swift-umbrella.h"; sourceTree = "<group>"; };
 		E7BF8F9B44D2606C20922A8364160F26 /* Pods-Helper4Swift_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Helper4Swift_Tests-resources.sh"; sourceTree = "<group>"; };
+		E87A3E79214231A800EBEC3D /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
+		E87A3E7B2142332D00EBEC3D /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		E8D6370C2131F31E00FCF60B /* UITabBarController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extension.swift"; sourceTree = "<group>"; };
 		E8D6371221320DC600FCF60B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		F28037FDD86D948C12B98B164D2FF9AC /* Pods-Helper4Swift_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Helper4Swift_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 				C739017B0CAA0EB73498D36B1BB45F8D /* UIView+Extension.swift */,
 				E8D6370C2131F31E00FCF60B /* UITabBarController+Extension.swift */,
 				E8D6371221320DC600FCF60B /* UIViewController+Extension.swift */,
+				E87A3E79214231A800EBEC3D /* CALayer+Extension.swift */,
+				E87A3E7B2142332D00EBEC3D /* UIImage+Extension.swift */,
 			);
 			name = Extensions;
 			path = Helper4Swift/Classes/Extensions;
@@ -415,8 +421,10 @@
 				F3031E8E80C26E31AA44B349C8A3A3EC /* UIColor+Extension.swift in Sources */,
 				60CAD7797411F155745B11AAB54B03B9 /* UIDevice+Extension.swift in Sources */,
 				2677C9A42DC822BD8CE03EDBE57CFB54 /* UIImageView+Extension.swift in Sources */,
+				E87A3E7A214231A800EBEC3D /* CALayer+Extension.swift in Sources */,
 				A16E61D70708C8449A60A7738B1B9708 /* UILabel+Extension.swift in Sources */,
 				07C938E1939881AFC6D0DAA95504CF2D /* UITextField+Extension.swift in Sources */,
+				E87A3E7C2142332D00EBEC3D /* UIImage+Extension.swift in Sources */,
 				3B9E5E11D80DC628B15090E24211FFFA /* UIView+Extension.swift in Sources */,
 				E8D6370D2131F31E00FCF60B /* UITabBarController+Extension.swift in Sources */,
 			);
