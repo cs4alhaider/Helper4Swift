@@ -20,7 +20,7 @@ class SecondViewController: UIViewController {
         let view = UIView()
         view.backgroundColor = UIColor.orange
         view.alpha = 1
-        view.layer.cornerRadius = 5
+        view.layer.roundCorners(corners: [.layerMinXMaxYCorner, .layerMaxXMaxYCorner], radius: 20)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -31,6 +31,7 @@ class SecondViewController: UIViewController {
         buttton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
         buttton.setTitleColor(.white, for: .normal)
         buttton.backgroundColor = .gray
+        buttton.clipsToBounds = true
         buttton.layer.cornerRadius = 3
         buttton.translatesAutoresizingMaskIntoConstraints = false
         buttton.addTarget(self, action: #selector(myButtonAction(_:)), for: .touchUpInside)
@@ -87,6 +88,12 @@ class SecondViewController: UIViewController {
         backView.addSubview(myButton)
         myButton.anchorWithDimensions(height: 70, width: 200, centerX: backView.centerXAnchor)
         myButton.anchor(bottom: backView.bottomAnchor, bottomConstant: 15)
+        if #available(iOS 11.0, *) {
+            myButton.layer.cornerRadius = 15
+            myButton.layer.maskedCorners = [.layerMaxXMaxYCorner]
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
 }

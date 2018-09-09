@@ -40,13 +40,12 @@ public class Helper4Swift {
      - Author: Abdullah Alhaider
      */
     
-    public static func fetchGenericData<Model: Decodable>(urlString: String, completion: @escaping (Model) -> ()) {
-        
-        let url = URL(string: urlString)
-        URLSession.shared.dataTask(with: url!) { (data, resp, err) in
+    public static func fetchGenericData<T: Decodable>(urlString: String, completion: @escaping (T) -> ()) {
+        guard let url = urlString.asURL else {return}
+        URLSession.shared.dataTask(with: url) { (data, resp, err) in
             guard let data = data else { return }
             do {
-                let object = try JSONDecoder().decode(Model.self, from: data)
+                let object = try JSONDecoder().decode(T.self, from: data)
                 completion(object)
             } catch let jsonErr {
                 print("Faild to decode json data : \(jsonErr)")

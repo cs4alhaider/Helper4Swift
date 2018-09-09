@@ -41,4 +41,17 @@ public extension CALayer {
         border.backgroundColor = color.cgColor;
         addSublayer(border)
     }
+    
+    /// Add rounded corner to any corner
+    ///
+    /// - Parameters:
+    ///   - corners: [CACornerMask]
+    ///   - radius: corner radius
+    func roundCorners(corners: CACornerMask, radius: CGFloat){
+        self.masksToBounds = true
+        self.cornerRadius = radius
+        if #available(iOS 11.0, *) {
+            self.maskedCorners = corners
+        }
+    }
 }

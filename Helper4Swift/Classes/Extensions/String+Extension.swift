@@ -21,8 +21,12 @@ public extension String {
         return NSLocalizedString(self, comment: "")
     }
     
-    var asImage: UIImage {
-        return UIImage(named: self) ?? UIImage()
+    var asImage: UIImage? {
+        return UIImage(named: self)
+    }
+    
+    var asURL: URL? {
+        return URL(string: self)
     }
     
     /// Checking if string is empty and does not contain white spaces
