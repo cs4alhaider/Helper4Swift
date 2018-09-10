@@ -10,27 +10,25 @@ import Foundation
 public extension String {
     
     
-    
-    
     /* -------------------------------------------------------------------------------- */
     /* -------------------------------------------------------------------------------- */
     /* -------------------------------------------------------------------------------- */
     
     
-    var localized: String {
+    public var localized: String {
         return NSLocalizedString(self, comment: "")
     }
     
-    var asImage: UIImage? {
+    public var asImage: UIImage? {
         return UIImage(named: self)
     }
     
-    var asURL: URL? {
+    public var asURL: URL? {
         return URL(string: self)
     }
     
     /// Checking if string is empty and does not contain white spaces
-    var isEmptyAtAll: Bool {
+    public var isEmptyAtAll: Bool {
         if self.isEmpty && !isWhiteSpaceOnly {
             return true
         }
@@ -104,6 +102,24 @@ public extension String {
         let passwordFormat = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$"
         let passwordPredicate = NSPredicate(format:"SELF MATCHES %@", passwordFormat)
         return passwordPredicate.evaluate(with: self)
+    }
+    
+    /* -------------------------------------------------------------------------------- */
+    
+    
+    /**
+     validating a string whether it is hexadecimal color or not using regular expression.
+     *How to use :*
+     Declare a variable or constant like ==> let hexString = "#ffffff".isValidHex, or "#fff"
+     - important: Regular expression is case sensitive.
+     - returns: true.
+     - Author: Abdullah Alhaider
+     */
+    
+    public var isValidHex: Bool {
+        let hexadecimalFormat = "^#(?:[0-9a-fA-F]{3}){1,2}$"
+        let hexadecimalPredicate = NSPredicate(format:"SELF MATCHES %@", hexadecimalFormat)
+        return hexadecimalPredicate.evaluate(with: self)
     }
     
     
