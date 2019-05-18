@@ -8,12 +8,22 @@
 import UIKit
 
 public extension UIViewController {
-    
+    var backgroundColor: UIColor? {
+        get {
+            return view.backgroundColor
+        }
+        set {
+            view.backgroundColor = newValue
+        }
+    }
+}
+
+public extension UIViewController {
     
     /// changing the back bar button title and color for subViewControllers
     ///
     /// - Parameter stringToUse: back bar button title
-    public func setBackButtonTitle(_ stringToUse: String){
+    func setBackButtonTitle(_ stringToUse: String){
         let titleToSet = stringToUse
         let bacButton = UIBarButtonItem(title: titleToSet, style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = bacButton
@@ -27,7 +37,7 @@ public extension UIViewController {
     ///   - message: message to set
     ///   - buttonTitle: button title to set
     ///   - buttonHandler: completion handler for the button
-    public func showOneActionAlert(title: String?, message: String?, buttonTitle: String?, buttonHandler: (() -> ())?) {
+    func showOneActionAlert(title: String?, message: String?, buttonTitle: String?, buttonHandler: (() -> ())?) {
         guard let _ = buttonTitle else { return }
         guard title != nil || message != nil else { return }
         let alert = UIAlertController(title: title ?? "", message: message ?? "", preferredStyle: .alert)
@@ -46,7 +56,7 @@ public extension UIViewController {
     ///   - btn1Title: button 1 title to set
     ///   - btn2Title: button 2 title to set
     ///   - btn1Handler: completion handler for the first button
-    public func showTwoActionsAlert(title: String?, message: String?, btn1Title: String?, btn2Title: String?, btn1Handler: (() -> ())?) {
+    func showTwoActionsAlert(title: String?, message: String?, btn1Title: String?, btn2Title: String?, btn1Handler: (() -> ())?) {
         guard let _ = btn1Title, let _ = btn2Title else { return }
         guard title != nil || message != nil else { return }
         let alert = UIAlertController(title: title ?? "", message: message ?? "", preferredStyle: .alert)

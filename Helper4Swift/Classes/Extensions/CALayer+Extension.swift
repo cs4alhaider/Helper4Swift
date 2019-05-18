@@ -15,7 +15,7 @@ public extension CALayer {
     ///   - edge: UIRectEdge
     ///   - color: color of the border
     ///   - thickness: thickness of the border
-    public func addBorder(edge: UIRectEdge, color: UIColor? = .darkGray, thickness: CGFloat? = 1.0) {
+    func addBorder(edge: UIRectEdge, color: UIColor? = .darkGray, thickness: CGFloat? = 1.0) {
         
         guard let color = color else { return }
         guard let thickness = thickness else { return }

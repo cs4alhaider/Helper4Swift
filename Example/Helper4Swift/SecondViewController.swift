@@ -46,7 +46,7 @@ class SecondViewController: UIViewController {
     
     @objc fileprivate func myButtonAction(_ sender: UIButton) {
         if #available(iOS 10.0, *) {
-            Helper4Swift.shakePhone(style: .success)
+            H4S.feedbackGenerator(type: .success)
         }
     }
     

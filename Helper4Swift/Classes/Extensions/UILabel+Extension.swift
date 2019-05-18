@@ -9,7 +9,7 @@ import UIKit
 
 public extension UILabel {
     
-    public func setLineSpacing(lineSpacing: CGFloat = 0.0, lineHeightMultiple: CGFloat = 0.0) {
+    func setLineSpacing(lineSpacing: CGFloat = 0.0, lineHeightMultiple: CGFloat = 0.0) {
         
         guard let labelText = self.text else { return }
         
@@ -25,8 +25,44 @@ public extension UILabel {
         }
         
         // Line spacing attribute
-        attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
         
         self.attributedText = attributedString
+    }
+    
+    
+    /// Adding under line to the text
+    ///
+    /// - Author: Abdullah Alhaider.
+    func addUnderline() {
+        if let textString = self.text {
+            let attributedString = NSMutableAttributedString(string: textString)
+            attributedString.addAttribute(NSAttributedString.Key.underlineStyle,
+                                          value: NSUnderlineStyle.single.rawValue,
+                                          range: NSRange(location: 0, length: attributedString.length - 1))
+            attributedText = attributedString
+        }
+    }
+    
+    /// Multible cases to animate the UILabel
+    ///
+    /// - Author: Abdullah Alhaider.
+    enum UILabelAnimation {
+        /// Will change the text color and animate if the duration > 0
+        case changeTextColor(to: UIColor, duration: TimeInterval)
+    }
+    
+    /// Implimntation for all cases in `UILabelAnimation`
+    ///
+    /// - Parameter animation: UILabelAnimation
+    ///
+    /// - Author: Abdullah Alhaider.
+    func labelAnimation(_ animation: UILabelAnimation) {
+        switch animation {
+        case .changeTextColor(let newColor, let duration):
+            UIView.animate(withDuration: duration) {
+                self.textColor = newColor
+            }
+        }
     }
 }

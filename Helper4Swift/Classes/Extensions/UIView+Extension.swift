@@ -7,15 +7,78 @@
 
 import UIKit
 
+/// Two cases replacing `isHidden`
+///
+/// - visible: means `isHidden = false`
+/// - hidden: means `isHidden = true`
+///
+/// - Author: Abdullah Alhaider.
+public enum UIViewDisplayMode {
+    case visible
+    case hidden
+    // Please do not add any extra cases
+}
+
 public extension UIView {
     
-    /**
-     Adds a vertical gradient layer with two **UIColors** to the **UIView**.
-     - Parameter topColor: The top **UIColor**.
-     - Parameter bottomColor: The bottom **UIColor**.
-     */
+    /// Elegent way to show and hide any UIView insted of `someView.isHidden = true` or `!someView.isHidden = true`
+    ///
+    /// - Author: Abdullah Alhaider.
+    var display: UIViewDisplayMode {
+        get {
+            return self.isHidden ? .hidden : .visible
+        }
+        set {
+            self.isHidden = newValue == .hidden ? true : false
+        }
+    }
     
-    public func addVerticalGradientLayer(topColor:UIColor, bottomColor:UIColor) {
+    var cornerRadius: CGFloat {
+        get {
+            return self.layer.cornerRadius
+        }
+        set {
+            self.layer.cornerRadius = newValue
+        }
+    }
+    
+    var borderWidth: CGFloat {
+        get {
+            return self.layer.borderWidth
+        }
+        set {
+            self.layer.borderWidth = newValue
+        }
+    }
+    
+    var borderColor: UIColor? {
+        get {
+            return nil
+        }
+        set {
+            self.layer.borderColor = newValue?.cgColor
+        }
+    }
+}
+
+
+public extension UIView {
+    
+    /// Adding array of views to the subView
+    ///
+    /// - Parameter views: UIView | UIButton | UIImageView and all other UIKit elements
+    ///
+    /// - Author: Abdullah Alhaider.
+    func addSubviews(_ views: [UIView]) {
+        views.forEach { addSubview($0) }
+    }
+    
+    /// Adds a vertical gradient layer with two **UIColors** to the **UIView**.
+    ///
+    /// - Parameters:
+    ///   - topColor: The top
+    ///   - bottomColor: The bottom
+    func addVerticalGradientLayer(topColor:UIColor, bottomColor:UIColor) {
         let gradient = CAGradientLayer()
         gradient.frame = self.bounds
         gradient.colors = [
@@ -28,183 +91,140 @@ public extension UIView {
         self.layer.insertSublayer(gradient, at: 0)
     }
     
-    // To use it in you viewDidLoad() -->> view.addVerticalGradientLayer(topColor: UIColor.black, bottomColor: UIColor.red)
-    
-    
-    
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    
-    public func applyViewDesign(masksToBounds: Bool = false,
-                                shadowColor: UIColor = .black,
-                                cornerRadius: CGFloat = 0.0,
-                                shadowOpacity: Float = 0.0,
-                                shadowOffset: CGSize = CGSize(width: 0, height: 0),
-                                shadowRadius: CGFloat = 0.0) {
-        
-        self.layer.masksToBounds = masksToBounds
-        self.layer.shadowColor = shadowColor.cgColor
-        self.layer.shadowOpacity = shadowOpacity
-        self.layer.shadowOffset = shadowOffset
-        self.layer.shadowRadius = shadowRadius
-        self.layer.cornerRadius = cornerRadius
-        //self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        self.layer.shouldRasterize = false
-        //self.layer.rasterizationScale = scale ? UIScreen.main.scale : 1
-    }
-    
-    
-    
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    
-    
-    var safeTopAnchor: NSLayoutYAxisAnchor {
-        if #available(iOS 11.0, *) {
-            return safeAreaLayoutGuide.topAnchor
-        }
-        return topAnchor
-    }
-    
-    var safeLeftAnchor: NSLayoutXAxisAnchor {
-        if #available(iOS 11.0, *) {
-            return safeAreaLayoutGuide.leftAnchor
-        }
-        return leftAnchor
-    }
-    
-    var safeBottomAnchor: NSLayoutYAxisAnchor {
-        if #available(iOS 11.0, *) {
-            return safeAreaLayoutGuide.bottomAnchor
-        }
-        return bottomAnchor
-    }
-    
-    var safeRightAnchor: NSLayoutXAxisAnchor {
-        if #available(iOS 11.0, *) {
-            return safeAreaLayoutGuide.rightAnchor
-        }
-        return rightAnchor
-    }
-    
-    
-    /// A layout anchor representing all the edges of the view’s frame.
+    /// Adding round corners to a UIView | UIButton | UIImageView and all other UIKit elements
     ///
     /// - Parameters:
-    ///   - top: top anchor of the view
-    ///   - left: left anchor of the view
-    ///   - bottom: bottom anchor of the view
-    ///   - right: right anchor of the view
-    ///   - topConstant: constant of the top anchor
-    ///   - leftConstant: constant of the left anchor
-    ///   - bottomConstant: constant of the bottom anchor
-    ///   - rightConstant: constant of the right anchor
-    public func anchor(top: NSLayoutYAxisAnchor? = nil,
-                       left: NSLayoutXAxisAnchor? = nil,
-                       bottom: NSLayoutYAxisAnchor? = nil,
-                       right: NSLayoutXAxisAnchor? = nil,
-                       topConstant: CGFloat = 0,
-                       leftConstant: CGFloat = 0,
-                       bottomConstant: CGFloat = 0,
-                       rightConstant: CGFloat = 0) {
-        
-        translatesAutoresizingMaskIntoConstraints = false
-        
-        if let top = top {
-            topAnchor.constraint(equalTo: top, constant: topConstant).isActive = true
-        }
-        
-        if let bottom = bottom {
-            bottomAnchor.constraint(equalTo: bottom, constant: -bottomConstant).isActive = true
-        }
-        
-        if let left = left {
-            leftAnchor.constraint(equalTo: left, constant: leftConstant).isActive = true
-        }
-        
-        if let right = right {
-            rightAnchor.constraint(equalTo: right, constant: -rightConstant).isActive = true
-        }
-        
-    }
-    
-    
-    
-    /// A layout anchor representing the dimensions of the view’s frame.
+    ///   - corners: .topLeft | .topRight | .bottomLeft | .bottomRight
+    ///   - radius: corner radius
     ///
-    /// - Parameters:
-    ///   - height: height of the view
-    ///   - width: width of the view
-    ///   - centerX: X center of the view
-    ///   - centerY: Y center of the view
-    ///   - centerXConstant: constant of X
-    ///   - centerYConstant: constant of Y
-    public func anchorWithDimensions(height: CGFloat? = nil,
-                                     width: CGFloat? = nil,
-                                     centerX: NSLayoutXAxisAnchor? = nil,
-                                     centerY: NSLayoutYAxisAnchor? = nil,
-                                     centerXConstant: CGFloat = 0,
-                                     centerYConstant: CGFloat = 0) {
-        
-        translatesAutoresizingMaskIntoConstraints = false
-        
-        if let height = height {
-            heightAnchor.constraint(equalToConstant: height).isActive = true
-        }
-        
-        if let width = width {
-            widthAnchor.constraint(equalToConstant: width).isActive = true
-        }
-        
-        if let centerX = centerX {
-            centerXAnchor.constraint(equalTo: centerX, constant: centerXConstant).isActive = true
-        }
-        
-        if let centerY = centerY {
-            centerYAnchor.constraint(equalTo: centerY, constant: -centerYConstant).isActive = true
+    /// - Author: Abdullah Alhaider
+    func roundCorners(corners: UIRectCorner = .allCorners, radius: CGFloat) {
+        if #available(iOS 11.0, *) {
+            layer.cornerRadius = radius
+            guard !corners.contains(.allCorners) else { return }
+            layer.maskedCorners = []
+            if corners.contains(.topLeft) {
+                layer.maskedCorners.insert(.layerMaxXMinYCorner)
+            }
+            if corners.contains(.topRight) {
+                layer.maskedCorners.insert(.layerMinXMinYCorner)
+            }
+            if corners.contains(.bottomLeft) {
+                layer.maskedCorners.insert(.layerMinXMaxYCorner)
+            }
+            if corners.contains(.bottomRight) {
+                layer.maskedCorners.insert(.layerMaxXMaxYCorner)
+            }
+        } else {
+            let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+            let mask = CAShapeLayer()
+            mask.path = path.cgPath
+            layer.mask = mask
         }
     }
     
+    /// Helper method for addSubviewFromNib() to load the nib file into UIView subclass
+    ///
+    /// - Author: Abdullah Alhaider.
+    private func viewFromNibForClass() -> UIView {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
+        let view = nib.instantiate(withOwner: self, options: nil)[0] as? UIView
+        return view ?? UIView()
+    }
     
-    /// A layout anchor representing the dimensions with multiplier of the view’s frame.
+    /// Adding the nib file with UIView class
+    ///
+    /// - Author: Abdullah Alhaider.
+    func addSubviewFromNib() {
+        let view = viewFromNibForClass()
+        view.frame = bounds
+        // autolayout
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        addSubview(view)
+    }
+    
+    /// Setting up array of labels
     ///
     /// - Parameters:
-    ///   - height: height of the view you want to count on
-    ///   - width: width of the view you want to count on
-    ///   - heightMultiplier: height multiplier
-    ///   - widthMultiplier: width multiplier
-    ///   - centerX: X center of the view
-    ///   - centerY: Y center of the view
-    ///   - centerXConstant: constant of X
-    ///   - centerYConstant: constant of Y
-    public func anchorWithMultiplier(height: NSLayoutDimension? = nil,
-                                     width: NSLayoutDimension? = nil,
-                                     heightMultiplier: CGFloat = 1,
-                                     widthMultiplier: CGFloat = 1,
-                                     centerX: NSLayoutXAxisAnchor? = nil,
-                                     centerY: NSLayoutYAxisAnchor? = nil,
-                                     centerXConstant: CGFloat = 0,
-                                     centerYConstant: CGFloat = 0) {
-        
-        translatesAutoresizingMaskIntoConstraints = false
-        
-        if let height = height {
-            heightAnchor.constraint(equalTo: height, multiplier: heightMultiplier).isActive = true
+    ///   - labels: array of labels
+    ///   - textColor: text color for all
+    ///   - font: font
+    ///
+    /// - Author: Abdullah Alhaider.
+    func setupLabels(_ labels: [UILabel], textColor: UIColor? = nil, font: UIFont? = nil) {
+        labels.forEach {
+            if let newColor = textColor {
+                $0.textColor = newColor
+            }
+            if let newFont = font {
+                $0.font = newFont
+            }
         }
-        
-        if let width = width {
-            widthAnchor.constraint(equalTo: width, multiplier: widthMultiplier).isActive = true
+    }
+    
+    /// Adding localization to array of UILabels
+    ///
+    /// - Parameter dictionary: `[UILabel: String]` String will be the localization key.
+    ///
+    /// - Author: Abdullah Alhaider.
+    func addLocalization(_ dictionary: [UILabel: String]) {
+        for (label, string) in dictionary {
+            label.text = string.localized
         }
-        
-        if let centerX = centerX {
-            centerXAnchor.constraint(equalTo: centerX, constant: centerXConstant).isActive = true
+    }
+    
+    // ---------------------------- UIViewAnimation -------------------------------- //
+    
+    /// Multible of cases to animate any UIView
+    ///
+    /// - Author: Abdullah Alhaider.
+    enum UIViewAnimation {
+        /// Will change the color and animate if the duration > 0
+        case changeColor(to: UIColor, duration: TimeInterval)
+        /// Will hide the view and reduce the alpha value to 0 with animation if the duration > 0
+        case hideView(duruation: TimeInterval)
+        /// Will show the view and increase the alpha value to 1 with animation if the duration > 0
+        case showView(duruation: TimeInterval)
+    }
+    
+    /// Implimntation for all cases in `UIViewAnimation`
+    ///
+    /// - Parameter animation: UIViewAnimation
+    ///
+    /// - Author: Abdullah Alhaider.
+    func animate(_ animation: UIViewAnimation) {
+        switch animation {
+        case .changeColor(let newColor, let duration):
+            UIView.animate(withDuration: duration) {
+                self.backgroundColor = newColor
+            }
+        case .hideView(let duruation):
+            UIView.animate(withDuration: duruation) {
+                self.alpha = 0
+                self.display = .hidden
+            }
+        case .showView(let duruation):
+            UIView.animate(withDuration: duruation) {
+                self.display = .visible
+                self.alpha = 1
+            }
         }
+    }
+    
+    func applyShadowWithRoundCorners(masksToBounds: Bool = false,
+                                     shadowColor: UIColor = .black,
+                                     cornerRadius: CGFloat = 0.0,
+                                     shadowOpacity: Float = 0.0,
+                                     shadowOffset: CGSize = CGSize(width: 0, height: 0),
+                                     shadowRadius: CGFloat = 0.0) {
         
-        if let centerY = centerY {
-            centerYAnchor.constraint(equalTo: centerY, constant: -centerYConstant).isActive = true
-        }
+        layer.masksToBounds = masksToBounds
+        layer.shadowColor = shadowColor.cgColor
+        layer.shadowOpacity = shadowOpacity
+        layer.shadowOffset = shadowOffset
+        layer.shadowRadius = shadowRadius
+        layer.cornerRadius = cornerRadius
+        layer.shouldRasterize = false
     }
 }
-

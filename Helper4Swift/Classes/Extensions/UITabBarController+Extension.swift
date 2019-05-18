@@ -17,7 +17,9 @@ public extension UITabBarController {
     ///   - iconImage: image to use for tab bar image
     ///   - title: title for the navigation controller and tab bar
     /// - Returns: UINavigationController
-    public func creatNavController(for vc: UIViewController,
+    ///
+    /// - Author: Abdullah Alhaider
+    func creatNavController(for vc: UIViewController,
                                    iconImage: UIImage? = nil,
                                    title: String? = nil,
                                    barTintColor: UIColor? = nil,
@@ -49,6 +51,30 @@ public extension UITabBarController {
         }
         
         return navController
+    }
+    
+    /// Creating View controller with a navigation controller
+    ///
+    /// - Parameters:
+    ///   - navigationController: Any UINavigationController
+    ///   - viewController: Any UIViewController
+    ///   - selectedImage: The selected image
+    ///   - unselectedImage: The unselected image
+    ///   - title: Tab bar title
+    /// - Returns: UINavigationController with all
+    ///
+    /// - Author: Abdullah Alhaider
+    func createViewController<T: UINavigationController>(nv navigationController: T,
+                                                         vc viewController: UIViewController,
+                                                         selectedImage: UIImage,
+                                                         unselectedImage: UIImage,
+                                                         title: String?) -> T {
+        let vc = viewController
+        vc.tabBarItem.selectedImage = selectedImage
+        vc.tabBarItem.image = unselectedImage
+        vc.title = title
+        
+        return T(rootViewController: vc)
     }
 }
 

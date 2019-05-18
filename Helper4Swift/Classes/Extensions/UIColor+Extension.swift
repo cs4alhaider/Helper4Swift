@@ -9,33 +9,43 @@ import UIKit
 
 public extension UIColor {
     
-    /// setting a color from hexadecimal string
+    /// Allowing to use hex string
     ///
-    /// - Parameter hex: hexadecimal string
-    /// - Returns: UIColor from hexadecimal string
-    public func colorFromHexString (_ hex:String) -> UIColor {
+    /// - Parameter hexString: hex string like "ffffff"
+    ///
+    /// - Author: Abdullah Alhaider
+    convenience init(hexString: String) {
         
-        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+        let hexString: String = (hexString as NSString).trimmingCharacters(in: .whitespacesAndNewlines)
+        let scanner = Scanner(string: hexString as String)
         
-        if (cString.hasPrefix("#")) {
-            cString.remove(at: cString.startIndex)
+        if hexString.hasPrefix("#") {
+            scanner.scanLocation = 1
         }
+        var color: UInt32 = 0
+        scanner.scanHexInt32(&color)
         
-        if ((cString.count) != 6) {
-            return UIColor.gray
-        }
+        let mask = 0x000000FF
+        let rColor = Int(color >> 16) & mask
+        let gColor = Int(color >> 8) & mask
+        let bColor = Int(color) & mask
         
-        var rgbValue:UInt32 = 0
-        Scanner(string: cString).scanHexInt32(&rgbValue)
-        
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
+        let red = CGFloat(rColor) / 255.0
+        let green = CGFloat(gColor) / 255.0
+        let blue = CGFloat(bColor) / 255.0
+        self.init(red: red, green: green, blue: blue, alpha: 1)
     }
     
-    // use: Label.textColor = UIColor().colorFromHexString("ffffff")
-    
+    /// shortcut for RGB colors
+    ///
+    /// - Parameters:
+    ///   - r: red
+    ///   - g: green
+    ///   - b: blue
+    ///   - alpha: alpha = 1
+    ///
+    /// - Author: Abdullah Alhaider
+    convenience init(red: Int, green: Int, blue: Int, alpha: CGFloat = 1.0) {
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: alpha)
+    }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 public extension UIImage {
     
-    public func imageWithColor(color1: UIColor) -> UIImage {
+    func imageWithColor(color1: UIColor) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
         color1.setFill()
         

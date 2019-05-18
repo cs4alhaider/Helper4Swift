@@ -9,213 +9,277 @@ import Foundation
 
 public extension String {
     
+    /// Convert Arabic numbers to English numbers
+    ///
+    /// - Author: Abdullah Alhaider
+    var toEnglishNumbers: String {
+        var str = self
+        let map = ["٠": "0",
+                   "١": "1",
+                   "٢": "2",
+                   "٣": "3",
+                   "٤": "4",
+                   "٥": "5",
+                   "٦": "6",
+                   "٧": "7",
+                   "٨": "8",
+                   "٩": "9"]
+        map.forEach { str = str.replacingOccurrences(of: $0, with: $1) }
+        return str
+    }
     
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    
-    
-    public var localized: String {
+    /// Used for change the language
+    ///
+    /// - Author: Abdullah Alhaider
+    var localized: String {
         return NSLocalizedString(self, comment: "")
     }
     
-    public var asImage: UIImage? {
+    
+    /// Readable way to use !text.isEmpty
+    ///
+    /// - Author: Abdullah Alhaider
+    var isNotEmpty: Bool {
+        return !self.isEmpty
+    }
+    
+    /// Shortcut of: UIImage(named: "imageName")
+    ///
+    /// - Author: Abdullah Alhaider
+    var asImage: UIImage? {
         return UIImage(named: self)
     }
     
-    public var asURL: URL? {
+    /// Shortcut for string urls like: URL(string: "http://google.com")
+    ///
+    /// - Author: Abdullah Alhaider
+    var asURL: URL? {
         return URL(string: self)
     }
     
+    /// Shortcut for Notification.Name like: Notification.Name(rawValue: "string")
+    ///
+    /// - Author: Abdullah Alhaider
+    var asNotificationName: Notification.Name {
+        return Notification.Name(rawValue: self)
+    }
+    
+    /// Shortcut for `UIStoryboard(name: "UIStoryboard", bundle: nil)`
+    ///
+    /// - Author: Abdullah Alhaider
+    var asStoryboard: UIStoryboard {
+        return UIStoryboard(name: self, bundle: nil)
+    }
+    
     /// Checking if string is empty and does not contain white spaces
-    public var isEmptyAtAll: Bool {
+    ///
+    /// - Author: Abdullah Alhaider
+    var isEmptyAtAll: Bool {
         if self.isEmpty && !isWhiteSpaceOnly {
             return true
         }
         return false
     }
     
-    /* -------------------------------------------------------------------------------- */
-    /* -- Learn about regular expression in => https://www.regexbuddy.com/regex.html -- */
-    /* ---------------- Test any reg on => https://www.regextester.com ---------------- */
-    /* -------------------------------------------------------------------------------- */
+    /// Return only the digits from a string
+    ///
+    /// - Author: Abdullah Alhaider
+    var onlyDigits: String {
+        let set = NSCharacterSet.decimalDigits.inverted
+        return self.components(separatedBy: set).joined(separator: "")
+    }
     
+    /// Return same string withot whitespaces or newlines
+    ///
+    /// - Author: Abdullah Alhaider
+    var trimmed: String {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
     
-    /**
-     Return true if the string matched an email format like "abdullah@alhaider.net" .
-     *How to use :*
-     Declare a variable or constant like ==> let email = "abc@efg.com".isValidEmail
-     *Values :*
-     `emailFormat` Passing a regulare expression string "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}".
-     `emailPredicate` NSPredicate.
-     - important: Regular expression is case sensitive.
-     - returns: true.
-     - Author: Abdullah Alhaider
-     */
-    public var isValidEmail: Bool {
+    /// Return true if the string matched an email format like "cs.alhaider@gmail.com"
+    ///
+    /// - Author: Abdullah Alhaider
+    var isValidEmail: Bool {
         let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}" // This is a regular expression
-        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
-        return emailPredicate.evaluate(with: self)
+        return self.matches(emailFormat)
     }
-
     
-    /* -------------------------------------------------------------------------------- */
-    
-    
-    /**
-     Return true if the string has only numbers "0123456789".
-     *How to use :*
-     Declare a variable or constant like ==> let number = "12345".isValidNumber
-     *Values*
-     `numberFormat` : Numbers regulare expression string "^[0-9]*$".
-     `numberPredicate` : NSPredicate(format:"SELF MATCHES %@", numberFormat).
-     - important: Regular expression is case sensitive.
-     - returns: true.
-     - Author:
-     Abdullah Alhaider
-     */
-    
-    public var isValidNumber: Bool {
+    /// Return true if the string has only numbers "0123456789".
+    ///
+    /// - Author: Abdullah Alhaider
+    var isValidNumber: Bool {
         let numberFormat = "^[0-9]*$"
-        let numberPredicate = NSPredicate(format:"SELF MATCHES %@", numberFormat)
-        return numberPredicate.evaluate(with: self)
+        return self.matches(numberFormat)
     }
     
-    
-    /* -------------------------------------------------------------------------------- */
-    
-    
-    /**
-     Return true if the string has minimum 8 characters, and at least one uppercase letter, and one lowercase letter and one number
-     , You can see more on http://regexlib.com/Search.aspx?k=password
-     *How to use :*
-     Declare a variable or constant like ==> let password = "Gg123456".isValidPassword
-     *Values*
-     `passwordFormat` : Password regulare expression string "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$".
-     `passwordPredicate` : NSPredicate(format:"SELF MATCHES %@", passwordFormat).
-     - important: Regular expression is case sensitive.
-     - returns: true.
-     - Author: Abdullah Alhaider
-     */
-    
-    public var isValidPassword: Bool {
+    /// Return true if the string has minimum 8 characters, and at least one uppercase letter, and one lowercase letter and one number
+    /// , You can see more on http://regexlib.com/Search.aspx?k=password
+    ///
+    /// - Author: Abdullah Alhaider
+    var isValidPassword: Bool {
         let passwordFormat = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$"
-        let passwordPredicate = NSPredicate(format:"SELF MATCHES %@", passwordFormat)
-        return passwordPredicate.evaluate(with: self)
+        return self.matches(passwordFormat)
     }
     
-    /* -------------------------------------------------------------------------------- */
-    
-    
-    /**
-     validating a string whether it is hexadecimal color or not using regular expression.
-     *How to use :*
-     Declare a variable or constant like ==> let hexString = "#ffffff".isValidHex, or "#fff"
-     - important: Regular expression is case sensitive.
-     - returns: true.
-     - Author: Abdullah Alhaider
-     */
-    
-    public var isValidHex: Bool {
+    /// Validating a string whether it is hexadecimal color or not using regular expression
+    ///
+    /// - Author: Abdullah Alhaider
+    var isValidHex: Bool {
         let hexadecimalFormat = "^#(?:[0-9a-fA-F]{3}){1,2}$"
-        let hexadecimalPredicate = NSPredicate(format:"SELF MATCHES %@", hexadecimalFormat)
-        return hexadecimalPredicate.evaluate(with: self)
+        return self.matches(hexadecimalFormat)
     }
     
-    
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    
-    
-    /**
-     Return true if the string is a valid url.
-     *How to use :*
-     Declare a variable or constant like ==> let url = "https://google.com".isValidUrl
-     - returns: true.
-     - Author: Abdullah Alhaider
-     */
-    
-    public var isValidUrl: Bool {
+    /// Return true if the string is a valid url
+    ///
+    /// - Author: Abdullah Alhaider
+    var isValidUrl: Bool {
         return URL(string: self) != nil
     }
     
-    
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    
-    public var isWhiteSpaceOnly: Bool {
+    /// Checking for whitespace
+    ///
+    /// - Author: Abdullah Alhaider
+    var isWhiteSpaceOnly: Bool {
         if self.isEmpty {
             return false
         }
         let emptyFormat = "\\s*"
-        let emptyPerdicate = NSPredicate(format:"SELF MATCHES %@", emptyFormat)
-        return emptyPerdicate.evaluate(with: self)
+        return self.matches(emptyFormat)
     }
     
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    
-    public var isStringOnlyZeros: Bool {
-        let ZeroFormat = "^[0٠]+$"
-        let ZeroPerdicate = NSPredicate(format:"SELF MATCHES %@", ZeroFormat)
-        return ZeroPerdicate.evaluate(with: self)
+    /// Checking if string contain only 0s
+    ///
+    /// - Author: Abdullah Alhaider
+    var isStringOnlyZeros: Bool {
+        let zeroFormat = "^[0٠]+$"
+        return self.matches(zeroFormat)
     }
     
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    
-    
-    /**
-     Replacing string with another string "aaa" => "ttt".
-     *How to use :*
-     replace(string: " ", replacement: "")
-     *Values*
-     `numberFormat` string.
-     `numberPredicate` replacement.
-     - returns: String .
-     - Author: Abdullah Alhaider.
-     */
-    
-    public func replace(string:String, replacement:String) -> String {
-        return self.replacingOccurrences(of: string, with: replacement, options: NSString.CompareOptions.literal, range: nil)
+    /// String decoded from base64 (if applicable).
+    ///
+    /// "SGVsbG8gV29ybGQh".base64Decoded = Optional("Hello World!")
+    ///
+    /// - Author: Abdullah Alhaider
+    var base64Decoded: String? {
+        guard let decodedData = Data(base64Encoded: self) else { return nil }
+        return String(data: decodedData, encoding: .utf8)
     }
     
+    /// String encoded in base64 (if applicable).
+    ///
+    /// "Hello World!".base64Encoded -> Optional("SGVsbG8gV29ybGQh")
+    ///
+    /// - Author: Abdullah Alhaider
+    var base64Encoded: String? {
+        let plainData = data(using: .utf8)
+        return plainData?.base64EncodedString()
+    }
     
-    /* -------------------------------------------------------------------------------- */
+    /// Readable string from a URL string.
+    ///
+    /// "it's%20easy%20to%20decode%20strings".urlDecoded -> "it's easy to decode strings"
+    ///
+    /// - Author: Abdullah Alhaider
+    var urlDecoded: String {
+        return removingPercentEncoding ?? self
+    }
     
-    /**
-     Removing the white space in any string by calling removeWhitespace() after a string value.
-     *How to use :*
-     Declare a variable or constant like ==> let text = "H e l l o   W o r l d !".removeWhitespace()
-     - returns: String with no white space in.
-     - Author: Abdullah Alhaider.
-     */
+    /// URL escaped string.
+    ///
+    /// "it's easy to encode strings".urlHostAllowed -> "it's%20easy%20to%20encode%20strings"
+    ///
+    /// - Author: Abdullah Alhaider
+    var urlHostAllowed: String {
+        return addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? self
+    }
     
-    public func removeWhitespace() -> String {
+    /// URL escaped string to add percent encoding using .urlQueryAllowed
+    ///
+    /// - Author: Abdullah Alhaider
+    var urlQueryAllowed: String {
+        return addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? self
+    }
+    
+}
+
+// MARK: - // -------------------------------- Methods ------------------------------------- //
+
+extension String {
+    
+    /// Replacing string with another string "aaa" => "ttt"
+    ///
+    /// - Parameters:
+    ///   - string: orignal string
+    ///   - replacement: replacment string
+    /// - Returns: replaced text
+    /// - Author: Abdullah Alhaider
+    func replace(string: String, replacement: String) -> String {
+        return self.replacingOccurrences(of: string, with: replacement, options: String.CompareOptions.literal, range: nil)
+    }
+    
+    /// Removing the white space in any string by calling removeWhitespace() after a string value
+    ///
+    /// - Returns: String with no white space in
+    /// - Author: Abdullah Alhaider
+    func removeWhitespace() -> String {
         return self.replace(string: " ", replacement: "")
     }
     
-    /* -------------------------------------------------------------------------------- */
-    
-    /**
-     Replacing string by another string .
-     - returns: String.
-     - Author: Abdullah Alhaider.
-     */
-    
-    public func replaceString(existingString: String, replaceItWith: String ) -> String {
-        return self.replace(string: existingString, replacement: replaceItWith)
+    /// Validate for if regex matches
+    ///
+    /// - Parameter regex: regular expression
+    /// - Returns: true if matches the given regex
+    ///
+    /// - Author: Abdullah Alhaider
+    func matches(_ regex: String) -> Bool {
+        return self.range(of: regex, options: .regularExpression) != nil
     }
     
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
+    /// Open url using the string
+    ///
+    /// - Author: Abdullah Alhaider
+    func openUrl() {
+        guard let url = URL(string: self) else { return }
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:])
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+    }
     
+    /// Open in messages if the string is valid number
+    ///
+    /// - Parameter message: message body
+    ///
+    /// - Author: Abdullah Alhaider
+    func openInMessagess(message: String) {
+        if self.isValidNumber {
+            "sms:\(self)&body=\(message.urlQueryAllowed)".openUrl()
+        }
+    }
     
+    /// Calling ussd number
+    ///
+    /// - Author: Abdullah Alhaider
+    func call() {
+        let urlString = self.urlHostAllowed
+        guard let url = URL(string: "tel://\(urlString)") else { return }
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:])
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+    }
     
-    
-}// Extension ends.
+    /// Counting the length and returning a boolen value
+    ///
+    /// - Parameters:
+    ///   - min: minmum length
+    ///   - max: maxmum length
+    /// - Returns: true if the length is more than or equel the `min` and length is less than or equel the `max`
+    ///
+    /// - Author: Abdullah Alhaider
+    func lengthIsBetween(min: Int, max: Int) -> Bool {
+        return (self.count >= min) && (self.count <= max)
+    }
+}

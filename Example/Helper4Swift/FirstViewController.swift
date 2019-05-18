@@ -30,7 +30,6 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         setup()
         fetchData()
-        print(Helper4Swift.getCurrentDate(format: .MMMMddYYYYWithTime))
     }
     
     fileprivate func setup() {
@@ -42,7 +41,7 @@ class FirstViewController: UIViewController {
     }
 
     func fetchData(){
-        Helper4Swift.fetchGenericData(urlString: jsonURL) { (coin: [Coin]) in
+        H4S.fetchGenericData(urlString: jsonURL) { (coin: [Coin]) in
             self.coinsArray = []
             coin.forEach({self.coinsArray.append($0.symbol ?? "")})
             DispatchQueue.main.async {
@@ -97,5 +96,3 @@ extension FirstViewController: UITableViewDataSource {
     }
     
 }
-
-//

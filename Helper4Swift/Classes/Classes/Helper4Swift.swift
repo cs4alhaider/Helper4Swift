@@ -8,39 +8,18 @@
 import Foundation
 import UIKit
 
+public struct H4S { }
 
-public protocol Helper4SwiftDelegate {
-    func didUserTakeScreenshot()
-}
-
-
-public class Helper4Swift {
+public extension H4S { // Simple network
     
-    public var delegate: Helper4SwiftDelegate?
-    
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    
-    
-    /// Tells the delegate when the user take a screenshot
-    public func screenshot() {
-        NotificationCenter.default.addObserver(forName: .UIApplicationUserDidTakeScreenshot, object: nil, queue: OperationQueue.main) { notification in
-            self.delegate?.didUserTakeScreenshot()
-        }
-    }
-    
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    
-    
-    /**
-     Fetching json data by passing the struct/class model and the urlString. "Good Solution to Eliminate Code Duplication!"
-     - Author: Abdullah Alhaider
-     */
-    
-    public static func fetchGenericData<T: Decodable>(urlString: String, completion: @escaping (T) -> ()) {
+    /// Fetching json data by passing the struct/class model and the urlString. "Good Solution to Eliminate Code Duplication!"
+    ///
+    /// - Parameters:
+    ///   - urlString: urlString
+    ///   - completion: T
+    ///
+    /// - Author: Abdullah Alhaider
+    static func fetchGenericData<T: Decodable>(urlString: String, completion: @escaping (T) -> ()) {
         guard let url = urlString.asURL else {return}
         URLSession.shared.dataTask(with: url) { (data, resp, err) in
             guard let data = data else { return }
@@ -52,197 +31,194 @@ public class Helper4Swift {
             }
         }.resume()
     }
+}
+
+public extension H4S { // Alerts
     
+    /// Typealias for alertButtonAction
+    ///
+    /// - Author: Abdullah Alhaider
+    typealias AlertButtonAction = (() -> Void)?
     
-    
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    
-    public enum dateFormat: String {
-        case MMMMddYYYYWithTime = "MMMM dd, yyyy 'at' h:mm a"
-        case ddmmyyyyWithTime = "dd/MM/yyyy 'at' h:mm a"
-        /*
-         - You can add as many format as you want
-         - and if you not familiar with other date format you can use this website
-         - to pick your best format http://nsdateformatter.com
-         */
+    /// Enum for alert type
+    ///
+    /// - success: success alert
+    /// - failure: failure alert
+    /// - normal: normal alert
+    /// - Author: Abdullah Alhaider
+    enum AlertType {
+        case success, failure, normal
     }
     
-    public static func getCurrentDate(format: dateFormat) -> String {
+    /// Show an alert with diffrent configations like time to dismiss this alert and button completion and is it .success or .normal
+    ///
+    /// - Parameters:
+    ///   - vc: UIViewController to show this alert on
+    ///   - alertType: type of the alert like .success to show green alert
+    ///   - title: alert title
+    ///   - body: alert message
+    ///   - dismissAfter: time to dismiss the alert
+    ///   - buttonTitle: button title
+    ///   - completion: button action completion
+    ///
+    /// - Author: Abdullah Alhaider
+    static func showAlert(vc: UIViewController? = UIApplication.topViewController(),
+                          _ alertType: AlertType,
+                          title: String? = nil,
+                          body: String? = nil,
+                          dismissAfter: TimeInterval? = nil,
+                          buttonTitle: String? = nil,
+                          completion: AlertButtonAction = nil) {
         
-        let theDate = Date()
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.dateFormat = format.rawValue // from enum dateFormat
-        let formatedDate = formatter.string(from:theDate)
-        
-        return formatedDate
-    }
-    
-    
-    public static func getCurrentDateWithThisFormat(formatToUse: String) -> String {
-        
-        let theDate = Date()
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.dateFormat = formatToUse
-        let formatedDate = formatter.string(from:theDate)
-        
-        return formatedDate
-    }
-    
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    
-    
-    /**
-     This method is to format numbers like Arabic numbers to EN numbers and so on with other languages ..
-     - Author: Abdullah Alhaider
-     */
-    public static func formatThisNumber(stringNumber: String) -> String {
-        
-        let ourString: String = stringNumber
-        let ourFormatter: NumberFormatter = NumberFormatter()
-        ourFormatter.locale = NSLocale(localeIdentifier: "EN") as Locale?
-        let ourFinal = ourFormatter.number(from: ourString)
-        print(ourFinal!)
-        let ourStringNumber = "\(Int(truncating: ourFinal!))"
-        
-        return ourStringNumber
-    }
-    
-    
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    
-    
-    public enum shakingType {
-        
-        case light
-        case medium
-        case heavy
-        case success
-        case warning
-        case error
-    }
-    
-    
-    @available(iOS 10.0, *)
-    public static func shakePhone(style: shakingType){
-        
-        if style == .light {
-            let lightGenerator = UIImpactFeedbackGenerator(style: .light)
-            lightGenerator.impactOccurred()
+        let alert = UIAlertController(title: title, message: body, preferredStyle: .alert)
+        if let buttonTitle = buttonTitle {
+            let ok = UIAlertAction(title: buttonTitle, style: .default) { (_) in
+                completion?()
+            }
+            alert.addAction(ok)
         }
-        
-        if style == .medium {
-            let mediumGenerator = UIImpactFeedbackGenerator(style: .medium)
-            mediumGenerator.impactOccurred()
+        // Accessing alert view backgroundColor :
+        switch alertType {
+        case .success:
+            alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        case .failure:
+            alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = #colorLiteral(red: 0.7967291667, green: 0.1695612325, blue: 0.08168510124, alpha: 1)
+        case .normal:
+            break
         }
+        // Accessing buttons tintcolor :
+        alert.view.tintColor = .black
         
-        if style == .heavy {
-            let heavyGenerator = UIImpactFeedbackGenerator(style: .heavy)
-            heavyGenerator.impactOccurred()
-        }
+        // presinting the alert controller ...
+        vc?.present(alert, animated: true, completion: nil)
         
-        if style == .success {
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.success)
-        }
-        
-        if style == .warning {
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.warning)
-        }
-        
-        if style == .error {
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.error)
-        }
-        
-    }
-    
-    
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    
-    
-    
-    // This method require UIDevice+Extension.swift
-    public static func disabledForSome(){
-        
-        let device = UIDevice.current.modelName
-        
-        if  device == "Simulator" ||
-            device == "iPad 2" ||
-            device == "iPad 3" ||
-            device == "iPad 4" ||
-            device == "iPad Air" ||
-            device == "iPad Air 2" ||
-            device == "iPad 5" ||
-            device == "iPad Mini" ||
-            device == "iPad Mini 2" ||
-            device == "iPad Mini 3" ||
-            device == "iPad Mini 4" ||
-            device == "iPad Pro 9.7 Inch" ||
-            device == "iPad Pro 12.9 Inch" ||
-            device == "iPad Pro 12.9 Inch 2. Generation" ||
-            device == "iPad Pro 10.5 Inch" {
-            
-            //Do something here like button.isHidden = true ...
+        if let timeToDismiss = dismissAfter {
+            DispatchQueue.main.asyncAfter(deadline: .now() + timeToDismiss) {
+                vc?.dismiss(animated: true, completion: nil)
+            }
         }
     }
     
+    /* -------------------------------- Basic Alerts ---------------------------------------- */
     
-    
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    
-    
-    
-    @objc func dismissKeyboard(thisView: UIView){
-        thisView.endEditing(true)
-    }
-    
-    
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    
-    
-    func toolBar(buttonTitle: String, textField: UITextField){
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        
-        let done = UIBarButtonItem(title: buttonTitle, style: .done, target: nil, action: #selector(Helper4Swift.dismissKeyboard))
-        toolbar.setItems([done], animated: true)
-        
-        textField.inputAccessoryView = toolbar
-    }
-    
-    
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------------- */
-    
-    
-    public static func showBasicAlert(title: String?, message: String?, buttonTitle: String?, vc: UIViewController) {
+    /// show a basic alert with title and message only
+    ///
+    /// - Parameters:
+    ///   - vc: UIViewController to show this alert on
+    ///   - title: alert title
+    ///   - message: alert message
+    ///   - buttonTitle: alert button text
+    ///
+    /// - Author: Abdullah Alhaider
+    static func showBasicAlert(vc: UIViewController, title: String?, message: String?, buttonTitle: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: buttonTitle, style: .default, handler: nil))
         vc.present(alert, animated: true)
     }
     
+    /// show an alert with title, message and one button with action
+    ///
+    /// - Parameters:
+    ///   - vc: UIViewController to show this alert on
+    ///   - title: title to set
+    ///   - message: message to set
+    ///   - buttonTitle: button title to set
+    ///   - buttonHandler: completion handler for the button
+    ///
+    /// - Author: Abdullah Alhaider
+    static func showOneActionAlert(vc: UIViewController, title: String?, message: String?, buttonTitle: String, buttonHandler: AlertButtonAction = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: buttonTitle, style: .default) { _ in
+            buttonHandler?()
+        })
+        vc.present(alert, animated: true, completion: nil)
+    }
     
+    /// show an alert with title, message and two buttons
+    ///
+    /// - Parameters:
+    ///   - title: title to set
+    ///   - message: message to set
+    ///   - btn1Title: button 1 title to set
+    ///   - btn2Title: button 2 title to set
+    ///   - btn1Handler: completion handler for the first button
+    ///
+    /// - Author: Abdullah Alhaider
+    static func showTwoActionsAlert(vc: UIViewController? = UIApplication.topViewController(),
+                                    title: String?,
+                                    message: String?,
+                                    btn1Title: String,
+                                    btn2Title: String,
+                                    btn1Handler: AlertButtonAction = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action1 = UIAlertAction(title: btn1Title, style: .default) { _ in
+            btn1Handler?()
+        }
+        let action2 = UIAlertAction(title: btn2Title, style: .default)
+        alert.addAction(action1)
+        alert.addAction(action2)
+        vc?.present(alert, animated: true, completion: nil)
+    }
+}
+
+public extension H4S { // Haptics
     
-    /****************************************************************************************************/
-    /****************************************************************************************************/
+    /// List of feedback
+    ///
+    /// - Author: Abdullah Alhaider
+    enum ImpactType {
+        /// UIImpactFeedbackGenerator(style: .light)
+        case light
+        /// UIImpactFeedbackGenerator(style: .medium)
+        case medium
+        /// UIImpactFeedbackGenerator(style: .heavy)
+        case heavy
+        /// notificationOccurred(.success)
+        case success
+        /// notificationOccurred(.warning)
+        case warning
+        /// notificationOccurred(.error)
+        case error
+    }
     
-    
-    
-    
-}// Class ends.
+    /// A concrete UIFeedbackGenerator subclass that creates haptics to simulate physical impacts.
+    ///
+    /// - Parameter type: A collision between small, light,.., user interface elements
+    ///
+    /// - Author: Abdullah Alhaider
+    static func feedbackGenerator(type: ImpactType) {
+        if #available(iOS 10.0, *) {
+            switch type {
+            case .light:
+                let lightGenerator = UIImpactFeedbackGenerator(style: .light)
+                lightGenerator.prepare()
+                lightGenerator.impactOccurred()
+                
+            case .medium:
+                let mediumGenerator = UIImpactFeedbackGenerator(style: .medium)
+                mediumGenerator.prepare()
+                mediumGenerator.impactOccurred()
+                
+            case .heavy:
+                let heavyGenerator = UIImpactFeedbackGenerator(style: .heavy)
+                heavyGenerator.prepare()
+                heavyGenerator.impactOccurred()
+                
+            case .success:
+                let generator = UINotificationFeedbackGenerator()
+                generator.prepare()
+                generator.notificationOccurred(.success)
+                
+            case .warning:
+                let generator = UINotificationFeedbackGenerator()
+                generator.prepare()
+                generator.notificationOccurred(.warning)
+                
+            case .error:
+                let generator = UINotificationFeedbackGenerator()
+                generator.prepare()
+                generator.notificationOccurred(.error)
+            }
+        }
+    }
+}
