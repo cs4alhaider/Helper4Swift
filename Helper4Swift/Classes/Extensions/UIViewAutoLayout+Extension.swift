@@ -50,6 +50,7 @@ public extension UIView {
     ///   - leftConstant: constant of the left anchor
     ///   - bottomConstant: constant of the bottom anchor
     ///   - rightConstant: constant of the right anchor
+    ///
     /// - Author: Abdullah Alhaider
     func anchor(top: NSLayoutYAxisAnchor? = nil,
                 left: NSLayoutXAxisAnchor? = nil,
@@ -94,6 +95,7 @@ public extension UIView {
     ///   - centerY: Y center of the view
     ///   - centerXConstant: constant of X
     ///   - centerYConstant: constant of Y
+    ///
     /// - Author: Abdullah Alhaider
     func anchorWithDimensions(height: CGFloat? = nil,
                               width: CGFloat? = nil,
@@ -132,6 +134,7 @@ public extension UIView {
     ///   - centerY: Y center of the view
     ///   - centerXConstant: constant of X
     ///   - centerYConstant: constant of Y
+    ///
     /// - Author: Abdullah Alhaider
     func anchorWithMultiplier(height: NSLayoutDimension? = nil,
                               width: NSLayoutDimension? = nil,
@@ -158,6 +161,23 @@ public extension UIView {
         
         if let centerY = centerY {
             centerYAnchor.constraint(equalTo: centerY, constant: -centerYConstant).isActive = true
+        }
+    }
+    
+    /// Filling the view to it's superview
+    ///
+    /// - Author: Abdullah Alhaider
+    func fillSuperview() {
+        guard let superview = self.superview else { return }
+        translatesAutoresizingMaskIntoConstraints = superview.translatesAutoresizingMaskIntoConstraints
+        if translatesAutoresizingMaskIntoConstraints {
+            autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            frame = superview.bounds
+        } else {
+            topAnchor.constraint(equalTo: superview.topAnchor).isActive = true
+            bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
+            leftAnchor.constraint(equalTo: superview.leftAnchor).isActive = true
+            rightAnchor.constraint(equalTo: superview.rightAnchor).isActive = true
         }
     }
 }

@@ -51,16 +51,15 @@ public extension UIView {
         }
     }
     
-    var borderColor: UIColor? {
+    var borderColor: CGColor? {
         get {
-            return nil
+            return self.layer.borderColor
         }
         set {
-            self.layer.borderColor = newValue?.cgColor
+            self.layer.borderColor = newValue
         }
     }
 }
-
 
 public extension UIView {
     
@@ -78,13 +77,10 @@ public extension UIView {
     /// - Parameters:
     ///   - topColor: The top
     ///   - bottomColor: The bottom
-    func addVerticalGradientLayer(topColor:UIColor, bottomColor:UIColor) {
+    func addVerticalGradientLayer(topColor: UIColor, bottomColor: UIColor) {
         let gradient = CAGradientLayer()
         gradient.frame = self.bounds
-        gradient.colors = [
-            topColor.cgColor,
-            bottomColor.cgColor
-        ]
+        gradient.colors = [topColor.cgColor, bottomColor.cgColor]
         gradient.locations = [0.0, 1.0]
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 0, y: 1)
@@ -226,5 +222,18 @@ public extension UIView {
         layer.shadowRadius = shadowRadius
         layer.cornerRadius = cornerRadius
         layer.shouldRasterize = false
+    }
+    
+    /// Create an image from a UIView
+    ///
+    /// - Returns: optional image
+    ///
+    /// - Author: Abdullah Alhaider.
+    func takeScreenshot() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
+        drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
     }
 }
