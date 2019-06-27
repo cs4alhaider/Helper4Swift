@@ -9,6 +9,38 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+## Available Helpers
+
+- [x] Array
+- [x] Bundle
+- [x] CALayer
+- [x] Date
+- [x] Dictionary
+- [x] Dispatch
+- [x] Encodable
+- [x] Int
+- [x] JSONDecoder
+- [x] String
+- [x] NSMutableAttributedString
+- [x] UIApplication
+- [x] UIButton
+- [x] UICollection
+- [x] UIColor
+- [x] UIImage
+- [x] UIImageView
+- [x] UIKeyboardType
+- [x] UILabel
+- [x] UINavigationController
+- [x] UIStoryboard
+- [x] UITabBarController
+- [x] UITableView
+- [x] UITextField
+- [x] UITextView
+- [x] UIView
+- [x] UIViewAutoLayout
+- [x] UIViewController
+
+
 ## Requirements
 
 Xcode 10* , Swift 5
