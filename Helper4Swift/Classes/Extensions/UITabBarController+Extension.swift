@@ -76,7 +76,7 @@ public extension UITabBarController {
     /// making the tab bar with gradient image
     func updateImageWithGradient(colors: [CGColor]) {
         
-        let navBarHeight = navigationBar.frame.size.height
+        let navBarHeight = tabBar.frame.size.height
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
         let heightAdjustment: CGFloat = 2
         let gradientHeight = navBarHeight + statusBarHeight + heightAdjustment
@@ -85,7 +85,7 @@ public extension UITabBarController {
                                         size: CGSize(width: UIScreen.main.bounds.size.width,
                                                      height: gradientHeight))
         guard let image = bgImage else { return }
-        navigationBar.barTintColor = UIColor(patternImage: image)
+        tabBar.barTintColor = UIColor(patternImage: image)
     }
     
     /// Create an UIImage
