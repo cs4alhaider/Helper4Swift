@@ -7,17 +7,15 @@
 
 import UIKit
 
- public extension UITextView {
+public extension UITextView {
     
     /// Scroll to the bottom of text view
-    /// - Author: Abdullah Alhaider.
     func scrollToBottom() {
         let range = NSRange(location: (text as String).count - 1, length: 1)
         scrollRangeToVisible(range)
     }
     
     /// Scroll to the top of text view
-    /// - Author: Abdullah Alhaider.
     func scrollToTop() {
         let range = NSRange(location: 0, length: 1)
         scrollRangeToVisible(range)

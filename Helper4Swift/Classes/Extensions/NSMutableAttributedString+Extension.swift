@@ -16,8 +16,6 @@ public extension NSMutableAttributedString {
     ///   - font: your font
     ///   - color: your foreground color
     /// - Returns: NSMutableAttributedString
-    ///
-    /// - Author: Abdullah Alhaider
     @discardableResult
     func bold(_ text: String, font: UIFont = UIFont.systemFont(ofSize: 17), color: UIColor = .black) -> NSMutableAttributedString {
         let boldString = NSMutableAttributedString(string: text, attributes: [.font: font, .foregroundColor: color])

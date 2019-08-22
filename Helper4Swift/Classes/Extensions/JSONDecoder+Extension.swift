@@ -15,8 +15,6 @@ public extension JSONDecoder {
     ///   - type: Decodable
     ///   - url: URL
     ///   - completion: data
-    ///
-    /// - Author: Abdullah Alhaider
     func decode<T: Decodable>(_ type: T.Type, fromURL url: String, completion: @escaping (T) -> Void) {
         guard let url = URL(string: url) else { fatalError("Invalid URL passed.") }
         DispatchQueue.global().async {

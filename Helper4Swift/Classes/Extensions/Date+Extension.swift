@@ -8,8 +8,6 @@
 import Foundation
 
 /// Cases of the date formate
-///
-/// - Author: Abdullah Alhaider
 public enum DateFormat: String {
     /// MMMMddYYYYWithTime: OCT 10, 2019 at 12:32 am
     case MMMMddYYYYWithTime = "MMMM dd, yyyy 'at' h:mm a"
@@ -34,8 +32,6 @@ public extension Date {
     ///
     /// - Parameter format: date format
     /// - Returns: the current date in the selected format
-    
-    /// - Author: Abdullah Alhaider
     func getCurrentDate(format: DateFormat = .DDMMMYYYY) -> String {
         let date = Date()
         let formatter = DateFormatter()
@@ -50,8 +46,6 @@ public extension Date {
     ///
     /// - Parameter formatToUse: your custom date format
     /// - Returns: current date
-    ///
-    /// - Author: Abdullah Alhaider
     func getCurrentDateUsingThisFormat(_ formatToUse: String = "dd/MM/yyyy 'at' h:mm a") -> String {
         let date = Date()
         let formatter = DateFormatter()
@@ -66,8 +60,6 @@ public extension Date {
     ///
     /// - Parameter date: Date()
     /// - Returns: time interval
-    ///
-    /// - Author: Abdullah Alhaider
     func timeSince(_ date: Date) -> TimeInterval {
         let time = Date()
         return time.timeIntervalSince(date)

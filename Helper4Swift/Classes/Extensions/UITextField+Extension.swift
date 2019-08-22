@@ -15,8 +15,6 @@ public enum UITextFieldMode {
 public extension UITextField {
     
     /// Checking if the textField is not empty to return notReady
-    ///
-    /// - Author: Abdullah Alhaider.
     var mode: UITextFieldMode {
         guard let text = self.text else { return .notReady }
         return text.isNotEmpty == true ? (.ready) : (.notReady)
@@ -30,8 +28,6 @@ public extension UITextField {
     /// - Parameters:
     ///   - image: image to use .. best to use PDF image.
     ///   - color: image color
-    ///
-    /// - Author: Abdullah Alhaider.
     func left(image: UIImage?, color: UIColor = .black, width: CGFloat = 20, height: CGFloat = 20) {
         if let image = image {
             leftViewMode = UITextField.ViewMode.always
@@ -52,8 +48,6 @@ public extension UITextField {
     /// - Parameters:
     ///   - image: image to use .. best to use PDF image.
     ///   - color: image color
-    ///
-    /// - Author: Abdullah Alhaider.
     func right(image: UIImage?, color: UIColor = .black, width: CGFloat = 20, height: CGFloat = 20) {
         if let image = image {
             rightViewMode = UITextField.ViewMode.always
@@ -72,14 +66,11 @@ public extension UITextField {
     /// Set placeholder text color.
     ///
     /// - Parameter color: placeholder text color.
-    ///
-    /// - Author: Abdullah Alhaider.
     func setPlaceHolderTextColor(_ color: UIColor) {
         self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor: color])
     }
     
     /// Set placeholder text and its color
-    /// - Author: Abdullah Alhaider.
     func placeholderTextAndColor(text value: String, color: UIColor = .red) {
         self.attributedPlaceholder = NSAttributedString(string: value, attributes: [ NSAttributedString.Key.foregroundColor: color])
     }
@@ -89,8 +80,6 @@ public extension UITextField {
     /// - Parameters:
     ///     - color: Border color
     ///     - borderHeight: Border height
-    ///
-    /// - Author: Abdullah Alhaider.
     func setBottomBorder(withColor color: UIColor, borderHeight: CGFloat) {
         borderStyle = .none
         layer.backgroundColor = UIColor.white.cgColor

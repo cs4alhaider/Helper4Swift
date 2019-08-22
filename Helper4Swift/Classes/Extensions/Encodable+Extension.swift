@@ -7,16 +7,9 @@
 
 import Foundation
 
-/// JSON == [String: Any]
-///
-/// - Author: Abdullah Alhaider
-public typealias JSON = [String: Any]
-
 public extension Encodable {
     
     /// Printing the response json on the consol in pretty printed json
-    ///
-    /// - Author: Abdullah Alhaider
     var debugDescription: String {
         do {
             let encoder = JSONEncoder()
@@ -28,23 +21,19 @@ public extension Encodable {
         }
     }
     
-    /// Converting object to postable JSON
-    ///
-    /// - Author: Abdullah Alhaider
-    func toDictionary(_ encoder: JSONEncoder = JSONEncoder()) -> JSON {
+    /// Converting object to postable [String: Any]
+    func toDictionary(_ encoder: JSONEncoder = JSONEncoder()) -> [String: Any] {
         guard let data = try? encoder.encode(self) else { return [:] }
         guard let object = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) else { return [:] }
-        guard let json = object as? JSON else { return [:] }
+        guard let json = object as? [String: Any] else { return [:] }
         return json
     }
     
-    /// Converting object to postable array of JSON
-    ///
-    /// - Author: Abdullah Alhaider
-    func toDictionaryArray(_ encoder: JSONEncoder = JSONEncoder()) -> [JSON] {
+    /// Converting object to postable array of [[String: Any]]
+    func toDictionaryArray(_ encoder: JSONEncoder = JSONEncoder()) -> [[String: Any]] {
         guard let data = try? encoder.encode(self) else { return [[:]] }
         guard let object = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) else { return [[:]] }
-        guard let jsonArray = object as? [JSON] else { return [[:]] }
+        guard let jsonArray = object as? [[String: Any]] else { return [[:]] }
         return jsonArray
     }
 }

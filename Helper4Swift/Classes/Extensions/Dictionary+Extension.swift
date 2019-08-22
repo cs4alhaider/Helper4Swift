@@ -10,8 +10,6 @@ import Foundation
 public extension Dictionary {
     
     /// Converting the dictionary to string
-    ///
-    /// - Author: Abdullah Alhaider
     var json: String {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: self, options: .prettyPrinted)
@@ -32,10 +30,36 @@ public extension Dictionary {
     /// ```
     ///
     /// - Parameter newDictionary: The new dictionary you want to add it to the old dictionary
-    ///
-    /// - Author: Abdullah Alhaider
     mutating func update(with newDictionary: Dictionary) {
         newDictionary.forEach({self.updateValue($1, forKey: $0)})
+    }
+    
+    /// JSON Data from dictionary.
+    ///
+    /// - Parameter prettify: set true to prettify data (default is false).
+    /// - Returns: optional JSON Data (if applicable).
+    func jsonData(prettify: Bool = false) -> Data? {
+        guard JSONSerialization.isValidJSONObject(self) else {
+            return nil
+        }
+        let options = (prettify == true) ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization.WritingOptions()
+        return try? JSONSerialization.data(withJSONObject: self, options: options)
+    }
+}
+
+public extension Dictionary where Value: Equatable {
+    
+    /// Returns an array of all keys that have the given value in dictionary.
+    ///
+    ///        let dict = ["key1": "value1", "key2": "value1", "key3": "value2"]
+    ///        dict.keys(forValue: "value1") -> ["key1", "key2"]
+    ///        dict.keys(forValue: "value2") -> ["key3"]
+    ///        dict.keys(forValue: "value3") -> []
+    ///
+    /// - Parameter value: Value for which keys are to be fetched.
+    /// - Returns: An array containing keys that have the given value.
+    func keys(forValue value: Value) -> [Key] {
+        return keys.filter { self[$0] == value }
     }
 }
 
@@ -49,14 +73,12 @@ public extension Dictionary where Key == String, Value == Any {
     /// names+=newNames
     /// print(names) // ["Ali": 1, "Ahmed": "Abdulaziz", "Abdullah": true, "M": "Sara"]
     /// ```
-    ///
-    /// - Author: Abdullah Alhaider
     static func += (lhs: inout [String: Any], rhs: [String: Any]) {
         rhs.forEach({ lhs[$0] = $1})
     }
 }
 
-extension Dictionary where Key == String, Value == String {
+public extension Dictionary where Key == String, Value == String {
     
     /// Appinding a dictionary of [String: String] to another dictionary with same type
     ///
@@ -66,8 +88,6 @@ extension Dictionary where Key == String, Value == String {
     /// names+=newNames
     /// print(names) // ["Ahmed": "Abdulaziz", "Abdullah": "Tariq", "M": "Sara", "Ali": "Abdullah"]
     /// ```
-    ///
-    /// - Author: Abdullah Alhaider
     static func += (lhs: inout [String: String], rhs: [String: String]) {
         rhs.forEach({ lhs[$0] = $1})
     }

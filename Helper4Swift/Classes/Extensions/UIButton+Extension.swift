@@ -15,22 +15,16 @@ public enum ButtonImagePosition {
 public extension UIButton {
     
     /// Shorter way to setTitle
-    ///
-    /// - Author: Abdullah Alhaider.
     func title(_ title: String, state: UIControl.State = .normal) {
         setTitle(title, for: state)
     }
     
     /// Shorter way to setTitleColor
-    ///
-    /// - Author: Abdullah Alhaider.
     func titleColor(color: UIColor, state: UIControl.State = .normal) {
         setTitleColor(color, for: state)
     }
     
     /// Shorter way to setImage
-    ///
-    /// - Author: Abdullah Alhaider.
     func withImage(_ image: UIImage, state: UIControl.State = .normal) {
         setImage(image, for: state)
     }
@@ -40,8 +34,6 @@ public extension UIButton {
     /// - Parameters:
     ///     - insets: Image insets
     ///     - direction: User interface direction
-    ///
-    /// - Author: Abdullah Alhaider.
     func setImageEdgeInsets(_ insets: UIEdgeInsets, direction: UIUserInterfaceLayoutDirection) {
         if UIApplication.shared.userInterfaceLayoutDirection != direction {
             imageEdgeInsets = UIEdgeInsets(top: insets.top, left: insets.right, bottom: insets.bottom, right: insets.left)
@@ -55,8 +47,6 @@ public extension UIButton {
     /// - Parameters:
     ///     - insets: Title insets
     ///     - direction: User interface direction
-    ///
-    /// - Author: Abdullah Alhaider.
     func setTitleEdgeInsets(_ insets: UIEdgeInsets, direction: UIUserInterfaceLayoutDirection) {
         if UIApplication.shared.userInterfaceLayoutDirection != direction {
             titleEdgeInsets = UIEdgeInsets(top: insets.top, left: insets.right, bottom: insets.bottom, right: insets.left)
@@ -69,8 +59,6 @@ public extension UIButton {
     ///
     /// - Parameters:
     ///     - position: Image position
-    ///
-    /// - Author: Abdullah Alhaider.
     func setImagePosition(_ position: ButtonImagePosition) {
         switch position {
         case .left: semanticContentAttribute = UIApplication.shared
@@ -81,8 +69,6 @@ public extension UIButton {
     }
     
     /// Adding under line to button text
-    ///
-    /// - Author: Abdullah Alhaider.
     func addUnderline() {
         guard let text = self.titleLabel?.text else { return }
         
@@ -95,8 +81,6 @@ public extension UIButton {
     }
     
     /// Multible cases to animate the UIButton
-    ///
-    /// - Author: Abdullah Alhaider.
     enum UIButtonAnimation {
         /// Will change the text color and animate if the duration > 0
         case changeTextColor(to: UIColor, duration: TimeInterval)
@@ -105,8 +89,6 @@ public extension UIButton {
     /// Implimntation for all cases in `UIButtonAnimation`
     ///
     /// - Parameter animation: UIButtonAnimation
-    ///
-    /// - Author: Abdullah Alhaider.
     func buttonAnimation(_ animation: UIButtonAnimation) {
         switch animation {
         case .changeTextColor(let newColor, let duration):

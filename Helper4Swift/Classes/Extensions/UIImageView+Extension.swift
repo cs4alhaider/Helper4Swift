@@ -9,14 +9,6 @@ import UIKit
 
 public extension UIImageView {
     
-    /// Rotate the image for RTL or LTR direction
-    ///
-    /// - Author: Abdullah Alhaider
-    func flip() -> UIImageView {
-        self.transform = CGAffineTransform(scaleX: -1, y: 1)
-        return self
-    }
-    
     func applyDesgin(clipsToBounds: Bool = true,
                      cornerRadius: CGFloat? = nil,
                      borderWidth: CGFloat? = nil,

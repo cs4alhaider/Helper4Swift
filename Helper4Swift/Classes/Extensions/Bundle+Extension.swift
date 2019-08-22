@@ -19,8 +19,6 @@ public extension Bundle {
     ///   - type: Decodable object
     ///   - file: file name or uel
     /// - Returns: decoded object
-    ///
-    /// - Author: Abdullah Alhaider
     func decode<T: Decodable>(_ type: T.Type, from file: String) -> T {
         guard let url = self.url(forResource: file, withExtension: nil) else {
             fatalError("Failed to locate \(file) in app bundle.")
@@ -43,8 +41,6 @@ public extension Bundle {
     
     /// Retrieves the `infoDictionary` dictionary inside Bundle and
     /// returns the value accessed with the key `CFBundleName`.
-    ///
-    /// - Author: Abdullah Alhaider
     var appName: String {
         guard let infoDictionary = Bundle.main.infoDictionary else { return "unknown" }
         guard let name = infoDictionary["CFBundleName"] as? String else { return "unknown" }
@@ -53,8 +49,6 @@ public extension Bundle {
     
     /// Retrieves the `infoDictionary` dictionary inside Bundle and
     /// returns the value accessed with the key `CFBundleIdentifier`.
-    ///
-    /// - Author: Abdullah Alhaider
     var bundleIdentifier: String {
         guard let infoDictionary = Bundle.main.infoDictionary else { return "unknown" }
         guard let bundleIdentifier = infoDictionary["CFBundleIdentifier"] as? String else { return "unknown" }
@@ -63,8 +57,6 @@ public extension Bundle {
     
     /// Retrieves the `infoDictionary` dictionary inside Bundle and
     /// returns the value accessed with the key `CFBundleVersion`.
-    ///
-    /// - Author: Abdullah Alhaider
     var buildNumber: String {
         guard let infoDictionary = Bundle.main.infoDictionary else { return "unknown" }
         guard let buildNumber = infoDictionary["CFBundleVersion"] as? String else { return "unknown" }
@@ -73,8 +65,6 @@ public extension Bundle {
     
     /// Retrieves the `infoDictionary` dictionary inside Bundle and
     /// returns the value accessed with the key `CFBundleShortVersionString`.
-    ///
-    /// - Author: Abdullah Alhaider
     var versionNumber: String {
         guard let infoDictionary = Bundle.main.infoDictionary else { return "unknown" }
         guard let versionNumber = infoDictionary["CFBundleShortVersionString"] as? String else { return "unknwon" }
@@ -86,7 +76,6 @@ public extension Bundle {
     /// it to return the version major number.
     ///
     /// - Returns: the version number of the Xcode project as a whole(e.g. 1.0.3)
-    /// - Author: Abdullah Alhaider
     var versionMajorNumber: String {
         guard let infoDictionary = Bundle.main.infoDictionary else { return "unknown" }
         guard let versionNumber = infoDictionary["CFBundleShortVersionString"] as? String else { return "unknwon" }
@@ -96,8 +85,6 @@ public extension Bundle {
     /// Retrieves the `infoDictionary` dictionary inside Bundle, retrieves
     /// the value accessed with the key `CFBundleShortVersionString` and parses
     /// it to return the version minor number.
-    ///
-    /// - Author: Abdullah Alhaider
     var versionMinorNumber: String {
         guard let infoDictionary = Bundle.main.infoDictionary else { return "unknown" }
         guard let versionNumber = infoDictionary["CFBundleShortVersionString"] as? String else { return "unknwon" }
@@ -107,8 +94,6 @@ public extension Bundle {
     /// Retrieves the `infoDictionary` dictionary inside Bundle, retrieves
     /// the value accessed with the key `CFBundleShortVersionString` and parses
     /// it to return the version patch number.
-    ///
-    /// - Author: Abdullah Alhaider
     var versionPatchNumber: String {
         guard let infoDictionary = Bundle.main.infoDictionary else { return "unknown" }
         guard let versionNumber = infoDictionary["CFBundleShortVersionString"] as? String else { return "unknwon" }
@@ -117,8 +102,6 @@ public extension Bundle {
     
     /// Retrieves the `infoDictionary` dictionary inside Bundle, and retrieves
     /// all the values inside it
-    ///
-    /// - Author: Abdullah Alhaider
     var getInfoDictionary: [String: Any] {
         guard let infoDictionary = Bundle.main.infoDictionary else { return [:] }
         return infoDictionary

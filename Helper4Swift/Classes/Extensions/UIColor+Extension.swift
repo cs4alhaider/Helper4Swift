@@ -12,8 +12,6 @@ public extension UIColor {
     /// Allowing to use hex string
     ///
     /// - Parameter hexString: hex string like "ffffff"
-    ///
-    /// - Author: Abdullah Alhaider
     convenience init(hexString: String) {
         
         let hexString: String = (hexString as NSString).trimmingCharacters(in: .whitespacesAndNewlines)
@@ -43,8 +41,6 @@ public extension UIColor {
     ///   - g: green
     ///   - b: blue
     ///   - alpha: alpha = 1
-    ///
-    /// - Author: Abdullah Alhaider
     convenience init(red: Int, green: Int, blue: Int, alpha: CGFloat = 1.0) {
         self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: alpha)
     }

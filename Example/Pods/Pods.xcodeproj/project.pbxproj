@@ -24,6 +24,10 @@
 		C8911EA7C23731078D5FF6FFA40197D6 /* Pods-Helper4Swift_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D6E72B81C93E022214B0D783D8ADF6CE /* Pods-Helper4Swift_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9523BEBFD5CC56E07260A28DBC9FBE5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */; };
 		D7F033AB5CD39AE8833535F8B27BEEC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
+		DD1761C9230F407A0028964C /* UIViewFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1761C8230F407A0028964C /* UIViewFromNib.swift */; };
+		DD1761CC230F40E70028964C /* TimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1761CB230F40E70028964C /* TimeInterval+Extension.swift */; };
+		DD1761CE230F41530028964C /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1761CD230F41530028964C /* URL+Extension.swift */; };
+		DD1761D0230F435B0028964C /* UIViewController+LocalAuthentication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1761CF230F435B0028964C /* UIViewController+LocalAuthentication+Extension.swift */; };
 		DDC8CDF9228F979B00F45C88 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC8CDF8228F979B00F45C88 /* Bundle+Extension.swift */; };
 		DDC8CDFB228F9C8E00F45C88 /* UIKeyboardType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC8CDFA228F9C8E00F45C88 /* UIKeyboardType+Extension.swift */; };
 		DDC8CDFD228F9DAA00F45C88 /* UIViewAutoLayout+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC8CDFC228F9DAA00F45C88 /* UIViewAutoLayout+Extension.swift */; };
@@ -104,6 +108,10 @@
 		D0D4304E6ECA004B5D7BA8EBAA62EE69 /* Helper4Swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Helper4Swift-dummy.m"; sourceTree = "<group>"; };
 		D6E72B81C93E022214B0D783D8ADF6CE /* Pods-Helper4Swift_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Helper4Swift_Example-umbrella.h"; sourceTree = "<group>"; };
 		D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		DD1761C8230F407A0028964C /* UIViewFromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewFromNib.swift; sourceTree = "<group>"; };
+		DD1761CB230F40E70028964C /* TimeInterval+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extension.swift"; sourceTree = "<group>"; };
+		DD1761CD230F41530028964C /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		DD1761CF230F435B0028964C /* UIViewController+LocalAuthentication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+LocalAuthentication+Extension.swift"; sourceTree = "<group>"; };
 		DDC8CDF8228F979B00F45C88 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		DDC8CDFA228F9C8E00F45C88 /* UIKeyboardType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKeyboardType+Extension.swift"; sourceTree = "<group>"; };
 		DDC8CDFC228F9DAA00F45C88 /* UIViewAutoLayout+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewAutoLayout+Extension.swift"; sourceTree = "<group>"; };
@@ -192,6 +200,9 @@
 				DDC8CE14228FAA3700F45C88 /* Dispatch+Extension.swift */,
 				DDC8CE16228FAB5500F45C88 /* Int+Extension.swift */,
 				DDC8CE18228FB12100F45C88 /* JSONDecoder+Extension.swift */,
+				DD1761CB230F40E70028964C /* TimeInterval+Extension.swift */,
+				DD1761CD230F41530028964C /* URL+Extension.swift */,
+				DD1761CF230F435B0028964C /* UIViewController+LocalAuthentication+Extension.swift */,
 			);
 			name = Extensions;
 			path = Helper4Swift/Classes/Extensions;
@@ -328,9 +339,18 @@
 			isa = PBXGroup;
 			children = (
 				691EB703A6873DCFE631666435ECA63C /* Helper4Swift.swift */,
+				DD1761CA230F40810028964C /* SubClasses */,
 			);
 			name = Classes;
 			path = Helper4Swift/Classes/Classes;
+			sourceTree = "<group>";
+		};
+		DD1761CA230F40810028964C /* SubClasses */ = {
+			isa = PBXGroup;
+			children = (
+				DD1761C8230F407A0028964C /* UIViewFromNib.swift */,
+			);
+			path = SubClasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -477,16 +497,20 @@
 				F3031E8E80C26E31AA44B349C8A3A3EC /* UIColor+Extension.swift in Sources */,
 				DDC8CE0D228FA50900F45C88 /* NSMutableAttributedString+Extension.swift in Sources */,
 				DDC8CE05228FA3D400F45C88 /* UITableView+Extension.swift in Sources */,
+				DD1761CE230F41530028964C /* URL+Extension.swift in Sources */,
 				DDC8CE17228FAB5500F45C88 /* Int+Extension.swift in Sources */,
 				DDC8CE11228FA5B800F45C88 /* Encodable+Extension.swift in Sources */,
 				2677C9A42DC822BD8CE03EDBE57CFB54 /* UIImageView+Extension.swift in Sources */,
 				DDC8CE09228FA4C100F45C88 /* UIStoryboard+Extension.swift in Sources */,
 				E87A3E7A214231A800EBEC3D /* CALayer+Extension.swift in Sources */,
+				DD1761CC230F40E70028964C /* TimeInterval+Extension.swift in Sources */,
 				DDC8CE0F228FA53100F45C88 /* Dictionary+Extension.swift in Sources */,
 				A16E61D70708C8449A60A7738B1B9708 /* UILabel+Extension.swift in Sources */,
 				DDC8CE03228FA39E00F45C88 /* UITextView+Extension.swift in Sources */,
 				DDC8CDFF228FA29300F45C88 /* UIApplication+Extension.swift in Sources */,
 				07C938E1939881AFC6D0DAA95504CF2D /* UITextField+Extension.swift in Sources */,
+				DD1761D0230F435B0028964C /* UIViewController+LocalAuthentication+Extension.swift in Sources */,
+				DD1761C9230F407A0028964C /* UIViewFromNib.swift in Sources */,
 				DDC8CDFD228F9DAA00F45C88 /* UIViewAutoLayout+Extension.swift in Sources */,
 				E87A3E7C2142332D00EBEC3D /* UIImage+Extension.swift in Sources */,
 				DDC8CE13228FA68200F45C88 /* Date+Extension.swift in Sources */,

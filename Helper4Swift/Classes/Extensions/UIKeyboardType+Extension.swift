@@ -7,11 +7,9 @@
 
 import UIKit
 
-extension UIKeyboardType {
+public extension UIKeyboardType {
     
     /// UIKeyboardType to show only the numbers keyboard
-    ///
-    /// - Author: Abdullah Alhaider
     static var onlyNumbers: UIKeyboardType {
         if #available(iOS 10.0, *) {
             return .asciiCapableNumberPad

@@ -13,8 +13,6 @@ public extension UIApplication {
     ///
     /// - Parameter controller: UIViewController
     /// - Returns: the top viewController currently displayed
-    ///
-    /// - Author: Abdullah Alhaider
     class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
         if let navigationController = controller as? UINavigationController {
             return topViewController(controller: navigationController.visibleViewController)

@@ -32,8 +32,6 @@ public extension UILabel {
     
     
     /// Adding under line to the text
-    ///
-    /// - Author: Abdullah Alhaider.
     func addUnderline() {
         if let textString = self.text {
             let attributedString = NSMutableAttributedString(string: textString)
@@ -45,8 +43,6 @@ public extension UILabel {
     }
     
     /// Multible cases to animate the UILabel
-    ///
-    /// - Author: Abdullah Alhaider.
     enum UILabelAnimation {
         /// Will change the text color and animate if the duration > 0
         case changeTextColor(to: UIColor, duration: TimeInterval)
@@ -55,8 +51,6 @@ public extension UILabel {
     /// Implimntation for all cases in `UILabelAnimation`
     ///
     /// - Parameter animation: UILabelAnimation
-    ///
-    /// - Author: Abdullah Alhaider.
     func labelAnimation(_ animation: UILabelAnimation) {
         switch animation {
         case .changeTextColor(let newColor, let duration):

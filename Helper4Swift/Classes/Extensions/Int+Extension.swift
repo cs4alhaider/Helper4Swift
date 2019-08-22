@@ -13,8 +13,6 @@ public extension Int {
     ///
     /// - Parameter format: date format
     /// - Returns: string date
-    ///
-    /// - Author: Abdullah Alhaider
     func convertToDate(format: DateFormat = .DDMMMYYYY) -> String {
         let date = Date(timeIntervalSince1970: TimeInterval(self))
         let dateFormatter = DateFormatter()

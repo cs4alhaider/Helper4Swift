@@ -50,8 +50,6 @@ public extension UIView {
     ///   - leftConstant: constant of the left anchor
     ///   - bottomConstant: constant of the bottom anchor
     ///   - rightConstant: constant of the right anchor
-    ///
-    /// - Author: Abdullah Alhaider
     func anchor(top: NSLayoutYAxisAnchor? = nil,
                 left: NSLayoutXAxisAnchor? = nil,
                 bottom: NSLayoutYAxisAnchor? = nil,
@@ -95,8 +93,6 @@ public extension UIView {
     ///   - centerY: Y center of the view
     ///   - centerXConstant: constant of X
     ///   - centerYConstant: constant of Y
-    ///
-    /// - Author: Abdullah Alhaider
     func anchorWithDimensions(height: CGFloat? = nil,
                               width: CGFloat? = nil,
                               centerX: NSLayoutXAxisAnchor? = nil,
@@ -134,8 +130,6 @@ public extension UIView {
     ///   - centerY: Y center of the view
     ///   - centerXConstant: constant of X
     ///   - centerYConstant: constant of Y
-    ///
-    /// - Author: Abdullah Alhaider
     func anchorWithMultiplier(height: NSLayoutDimension? = nil,
                               width: NSLayoutDimension? = nil,
                               heightMultiplier: CGFloat = 1,
@@ -165,8 +159,6 @@ public extension UIView {
     }
     
     /// Filling the view to it's superview
-    ///
-    /// - Author: Abdullah Alhaider
     func fillSuperview() {
         guard let superview = self.superview else { return }
         translatesAutoresizingMaskIntoConstraints = superview.translatesAutoresizingMaskIntoConstraints

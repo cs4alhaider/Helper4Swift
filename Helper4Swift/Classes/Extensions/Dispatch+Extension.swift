@@ -11,8 +11,6 @@ public extension DispatchQueue {
     
     /// A Boolean value indicating whether the current
     /// dispatch queue is the main queue.
-    ///
-    /// - Author: Abdullah Alhaider.
     static var isMainQueue: Bool {
         enum Static {
             static var key: DispatchSpecificKey<Void> = {
@@ -32,8 +30,6 @@ public extension DispatchQueue {
     ///
     /// - Parameter queue: The queue to compare against.
     /// - Returns: `true` if the current queue is the specified queue, otherwise `false`.
-    ///
-    /// - Author: Abdullah Alhaider.
     static func isCurrent(_ queue: DispatchQueue) -> Bool {
         let key = DispatchSpecificKey<Void>()
         

@@ -10,15 +10,11 @@ import UIKit
 public extension UICollectionView {
     
     /// Index path of last item in collectionView.
-    ///
-    /// - Author: Abdullah Alhaider.
     var indexPathForLastItem: IndexPath? {
         return indexPathForLastItem(inSection: lastSection)
     }
     
     /// Index of last section in collectionView.
-    ///
-    /// - Author: Abdullah Alhaider.
     var lastSection: Int {
         return numberOfSections > 0 ? numberOfSections - 1 : 0
     }
@@ -29,8 +25,6 @@ public extension UICollectionView {
     /// Number of all items in all sections of collectionView.
     ///
     /// - Returns: The count of all rows in the collectionView.
-    ///
-    /// - Author: Abdullah Alhaider.
     func numberOfItems() -> Int {
         var section = 0
         var itemsCount = 0
@@ -45,8 +39,6 @@ public extension UICollectionView {
     ///
     /// - Parameter section: section to get last item in.
     /// - Returns: optional last indexPath for last item in section (if applicable).
-    ///
-    /// - Author: Abdullah Alhaider.
     func indexPathForLastItem(inSection section: Int) -> IndexPath? {
         guard section >= 0 else {
             return nil
@@ -63,8 +55,6 @@ public extension UICollectionView {
     /// Reload data with a completion handler.
     ///
     /// - Parameter completion: completion handler to run after reloadData finishes.
-    ///
-    /// - Author: Abdullah Alhaider.
     func reloadData(_ completion: @escaping () -> Void) {
         UIView.animate(withDuration: 0, animations: {
             self.reloadData()
@@ -79,8 +69,6 @@ public extension UICollectionView {
     ///   - name: UICollectionViewCell type.
     ///   - indexPath: location of cell in collectionView.
     /// - Returns: UICollectionViewCell object with associated class name.
-    ///
-    /// - Author: Abdullah Alhaider.
     func dequeueReusableCell<T: UICollectionViewCell>(withClass name: T.Type, for indexPath: IndexPath) -> T {
         guard let cell = dequeueReusableCell(withReuseIdentifier: String(describing: name), for: indexPath) as? T else {
             return T()
@@ -95,8 +83,6 @@ public extension UICollectionView {
     ///   - name: UICollectionReusableView type.
     ///   - indexPath: location of cell in collectionView.
     /// - Returns: UICollectionReusableView object with associated class name.
-    ///
-    /// - Author: Abdullah Alhaider.
     func dequeueReusableSupplementaryView<T: UICollectionReusableView>(ofKind kind: String, withClass name: T.Type, for indexPath: IndexPath) -> T {
         guard let cell = dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: name), for: indexPath) as? T else {
             return T()
@@ -109,8 +95,6 @@ public extension UICollectionView {
     /// - Parameters:
     ///   - kind: the kind of supplementary view to retrieve. This value is defined by the layout object.
     ///   - name: UICollectionReusableView type.
-    ///
-    /// - Author: Abdullah Alhaider.
     func register<T: UICollectionReusableView>(supplementaryViewOfKind kind: String, withClass name: T.Type) {
         register(T.self, forSupplementaryViewOfKind: kind, withReuseIdentifier: String(describing: name))
     }
@@ -120,8 +104,6 @@ public extension UICollectionView {
     /// - Parameters:
     ///   - nib: Nib file used to create the collectionView cell.
     ///   - name: UICollectionViewCell type.
-    ///
-    /// - Author: Abdullah Alhaider.
     func register<T: UICollectionViewCell>(nib: UINib?, forCellWithClass name: T.Type) {
         register(nib, forCellWithReuseIdentifier: String(describing: name))
     }
@@ -129,8 +111,6 @@ public extension UICollectionView {
     /// Register UICollectionViewCell using class name.
     ///
     /// - Parameter name: UICollectionViewCell type.
-    ///
-    /// - Author: Abdullah Alhaider.
     func register<T: UICollectionViewCell>(cellWithClass name: T.Type) {
         register(T.self, forCellWithReuseIdentifier: String(describing: name))
     }
@@ -141,8 +121,6 @@ public extension UICollectionView {
     ///   - nib: Nib file used to create the reusable view.
     ///   - kind: the kind of supplementary view to retrieve. This value is defined by the layout object.
     ///   - name: UICollectionReusableView type.
-    ///
-    /// - Author: Abdullah Alhaider.
     func register<T: UICollectionReusableView>(nib: UINib?, forSupplementaryViewOfKind kind: String, withClass name: T.Type) {
         register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: String(describing: name))
     }
@@ -153,8 +131,6 @@ public extension UICollectionView {
     /// - Parameters:
     ///   - name: UICollectionViewCell type.
     ///   - bundleClass: Class in which the Bundle instance will be based on.
-    ///
-    /// - Author: Abdullah Alhaider.
     func register<T: UICollectionViewCell>(nibWithCellClass name: T.Type, at bundleClass: AnyClass? = nil) {
         let identifier = String(describing: name)
         var bundle: Bundle?

@@ -11,8 +11,6 @@ import UIKit
 ///
 /// - visible: means `isHidden = false`
 /// - hidden: means `isHidden = true`
-///
-/// - Author: Abdullah Alhaider.
 public enum UIViewDisplayMode {
     case visible
     case hidden
@@ -22,8 +20,6 @@ public enum UIViewDisplayMode {
 public extension UIView {
     
     /// Elegent way to show and hide any UIView insted of `someView.isHidden = true` or `!someView.isHidden = true`
-    ///
-    /// - Author: Abdullah Alhaider.
     var display: UIViewDisplayMode {
         get {
             return self.isHidden ? .hidden : .visible
@@ -63,11 +59,14 @@ public extension UIView {
 
 public extension UIView {
     
+    /// Rotate the image for RTL or LTR direction
+    func flip() {
+        self.transform = CGAffineTransform(scaleX: -1, y: 1)
+    }
+    
     /// Adding array of views to the subView
     ///
     /// - Parameter views: UIView | UIButton | UIImageView and all other UIKit elements
-    ///
-    /// - Author: Abdullah Alhaider.
     func addSubviews(_ views: [UIView]) {
         views.forEach { addSubview($0) }
     }
@@ -92,8 +91,6 @@ public extension UIView {
     /// - Parameters:
     ///   - corners: .topLeft | .topRight | .bottomLeft | .bottomRight
     ///   - radius: corner radius
-    ///
-    /// - Author: Abdullah Alhaider
     func roundCorners(corners: UIRectCorner = .allCorners, radius: CGFloat) {
         if #available(iOS 11.0, *) {
             layer.cornerRadius = radius
@@ -120,8 +117,6 @@ public extension UIView {
     }
     
     /// Helper method for addSubviewFromNib() to load the nib file into UIView subclass
-    ///
-    /// - Author: Abdullah Alhaider.
     private func viewFromNibForClass() -> UIView {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
@@ -130,8 +125,6 @@ public extension UIView {
     }
     
     /// Adding the nib file with UIView class
-    ///
-    /// - Author: Abdullah Alhaider.
     func addSubviewFromNib() {
         let view = viewFromNibForClass()
         view.frame = bounds
@@ -146,8 +139,6 @@ public extension UIView {
     ///   - labels: array of labels
     ///   - textColor: text color for all
     ///   - font: font
-    ///
-    /// - Author: Abdullah Alhaider.
     func setupLabels(_ labels: [UILabel], textColor: UIColor? = nil, font: UIFont? = nil) {
         labels.forEach {
             if let newColor = textColor {
@@ -162,8 +153,6 @@ public extension UIView {
     /// Adding localization to array of UILabels
     ///
     /// - Parameter dictionary: `[UILabel: String]` String will be the localization key.
-    ///
-    /// - Author: Abdullah Alhaider.
     func addLocalization(_ dictionary: [UILabel: String]) {
         for (label, string) in dictionary {
             label.text = string.localized
@@ -173,8 +162,6 @@ public extension UIView {
     // ---------------------------- UIViewAnimation -------------------------------- //
     
     /// Multible of cases to animate any UIView
-    ///
-    /// - Author: Abdullah Alhaider.
     enum UIViewAnimation {
         /// Will change the color and animate if the duration > 0
         case changeColor(to: UIColor, duration: TimeInterval)
@@ -187,8 +174,6 @@ public extension UIView {
     /// Implimntation for all cases in `UIViewAnimation`
     ///
     /// - Parameter animation: UIViewAnimation
-    ///
-    /// - Author: Abdullah Alhaider.
     func animate(_ animation: UIViewAnimation) {
         switch animation {
         case .changeColor(let newColor, let duration):
@@ -196,14 +181,16 @@ public extension UIView {
                 self.backgroundColor = newColor
             }
         case .hideView(let duruation):
-            UIView.animate(withDuration: duruation) {
+            UIView.animate(withDuration: duruation, animations: {
                 self.alpha = 0
-                self.display = .hidden
+            }) { (finshed) in
+                if finshed { self.display = .hidden }
             }
         case .showView(let duruation):
-            UIView.animate(withDuration: duruation) {
-                self.display = .visible
+            UIView.animate(withDuration: duruation, animations: {
                 self.alpha = 1
+            }) { (finshed) in
+                if finshed { self.display = .visible }
             }
         }
     }
@@ -227,13 +214,58 @@ public extension UIView {
     /// Create an image from a UIView
     ///
     /// - Returns: optional image
-    ///
-    /// - Author: Abdullah Alhaider.
     func takeScreenshot() -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
         drawHierarchy(in: self.bounds, afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image
+    }
+    
+    /// Added a motion effect with the device movment
+    ///
+    /// - Parameter value: value to move, def: Int == 40
+    func addMotionEffects(value: Int = 40) {
+        
+        // Add object movement with the device movment
+        let horizontalEffect1 = UIInterpolatingMotionEffect(
+            keyPath: "center.x",
+            type: .tiltAlongHorizontalAxis)
+        horizontalEffect1.minimumRelativeValue = -value
+        horizontalEffect1.maximumRelativeValue = value
+        
+        let verticalEffect1 = UIInterpolatingMotionEffect(
+            keyPath: "center.y",
+            type: .tiltAlongVerticalAxis)
+        verticalEffect1.minimumRelativeValue = -value
+        verticalEffect1.maximumRelativeValue = value
+        
+        let effectGroup1 = UIMotionEffectGroup()
+        effectGroup1.motionEffects = [horizontalEffect1, verticalEffect1]
+        addMotionEffect(effectGroup1)
+    }
+    
+    /// Adding fade transition
+    ///
+    /// - Parameter duration: CFTimeInterval
+    func fadeTransition(_ duration: CFTimeInterval) {
+        let animation = CATransition()
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        animation.type = CATransitionType.fade
+        animation.duration = duration
+        layer.add(animation, forKey: CATransitionType.fade.rawValue)
+    }
+    
+    /// Set layer corners & borderWidth & borderColors in one line. Default values is `nil`
+    func layer(corners: CGFloat? = nil, borderWidth: CGFloat? = nil, borderColors: UIColor? = nil) {
+        if let corners = corners {
+            layer.cornerRadius = corners
+        }
+        if let borderWidth = borderWidth {
+            layer.borderWidth = borderWidth
+        }
+        if let borderColors = borderColors {
+            layer.borderColor = borderColors.cgColor
+        }
     }
 }

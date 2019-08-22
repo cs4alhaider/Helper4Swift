@@ -17,8 +17,6 @@ public extension H4S { // Simple network
     /// - Parameters:
     ///   - urlString: urlString
     ///   - completion: T
-    ///
-    /// - Author: Abdullah Alhaider
     static func fetchGenericData<T: Decodable>(urlString: String, completion: @escaping (T) -> ()) {
         guard let url = urlString.asURL else {return}
         URLSession.shared.dataTask(with: url) { (data, resp, err) in
@@ -36,8 +34,6 @@ public extension H4S { // Simple network
 public extension H4S { // Alerts
     
     /// Typealias for alertButtonAction
-    ///
-    /// - Author: Abdullah Alhaider
     typealias AlertButtonAction = (() -> Void)?
     
     /// Enum for alert type
@@ -45,7 +41,6 @@ public extension H4S { // Alerts
     /// - success: success alert
     /// - failure: failure alert
     /// - normal: normal alert
-    /// - Author: Abdullah Alhaider
     enum AlertType {
         case success, failure, normal
     }
@@ -60,8 +55,6 @@ public extension H4S { // Alerts
     ///   - dismissAfter: time to dismiss the alert
     ///   - buttonTitle: button title
     ///   - completion: button action completion
-    ///
-    /// - Author: Abdullah Alhaider
     static func showAlert(vc: UIViewController? = UIApplication.topViewController(),
                           _ alertType: AlertType,
                           title: String? = nil,
@@ -108,8 +101,6 @@ public extension H4S { // Alerts
     ///   - title: alert title
     ///   - message: alert message
     ///   - buttonTitle: alert button text
-    ///
-    /// - Author: Abdullah Alhaider
     static func showBasicAlert(vc: UIViewController, title: String?, message: String?, buttonTitle: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: buttonTitle, style: .default, handler: nil))
@@ -124,8 +115,6 @@ public extension H4S { // Alerts
     ///   - message: message to set
     ///   - buttonTitle: button title to set
     ///   - buttonHandler: completion handler for the button
-    ///
-    /// - Author: Abdullah Alhaider
     static func showOneActionAlert(vc: UIViewController, title: String?, message: String?, buttonTitle: String, buttonHandler: AlertButtonAction = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: buttonTitle, style: .default) { _ in
@@ -142,8 +131,6 @@ public extension H4S { // Alerts
     ///   - btn1Title: button 1 title to set
     ///   - btn2Title: button 2 title to set
     ///   - btn1Handler: completion handler for the first button
-    ///
-    /// - Author: Abdullah Alhaider
     static func showTwoActionsAlert(vc: UIViewController? = UIApplication.topViewController(),
                                     title: String?,
                                     message: String?,
@@ -164,8 +151,6 @@ public extension H4S { // Alerts
 public extension H4S { // Haptics
     
     /// List of feedback
-    ///
-    /// - Author: Abdullah Alhaider
     enum ImpactType {
         /// UIImpactFeedbackGenerator(style: .light)
         case light
@@ -184,8 +169,6 @@ public extension H4S { // Haptics
     /// A concrete UIFeedbackGenerator subclass that creates haptics to simulate physical impacts.
     ///
     /// - Parameter type: A collision between small, light,.., user interface elements
-    ///
-    /// - Author: Abdullah Alhaider
     static func feedbackGenerator(type: ImpactType) {
         if #available(iOS 10.0, *) {
             switch type {
