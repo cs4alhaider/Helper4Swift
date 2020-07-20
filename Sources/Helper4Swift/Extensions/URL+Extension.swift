@@ -20,7 +20,7 @@ public extension URL {
     }
 }
 
-extension Collection where Element == URLQueryItem {
+public extension Collection where Element == URLQueryItem {
     /// Directly access the values by going over the query item key
     subscript(_ name: String) -> String? {
         first(where: { $0.name == name })?.value
@@ -28,7 +28,7 @@ extension Collection where Element == URLQueryItem {
 }
 
 /// Convert a dictionary into an array of query items
-extension Array where Element == URLQueryItem {
+public extension Array where Element == URLQueryItem {
     init<T: LosslessStringConvertible>(_ dictionary: [String: T]) {
         self = dictionary.map({ (key, value) -> Element in
             URLQueryItem(name: key, value: String(value))
@@ -36,7 +36,7 @@ extension Array where Element == URLQueryItem {
     }
 }
 
-extension URL {
+public extension URL {
     
     /// Initializing a URL from a `StaticString` which is known at compile time.
     ///
@@ -61,7 +61,7 @@ extension URL {
     }
 }
 
-extension String {
+public extension String {
     subscript(_ name: String) -> String? {
         guard let url = URL(string: self) else { return nil }
         let urlComponents = URLComponents(string: url.absoluteString)
