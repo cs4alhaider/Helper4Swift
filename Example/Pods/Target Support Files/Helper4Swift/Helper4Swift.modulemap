@@ -1,6 +1,0 @@
-framework module Helper4Swift {
-  umbrella header "Helper4Swift-umbrella.h"
-
-  export *
-  module * { export * }
-}
