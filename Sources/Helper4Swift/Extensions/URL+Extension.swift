@@ -7,6 +7,49 @@
 
 import Foundation
 
+// CoreData releated
+extension URL {
+
+    /// Creates a store URL for the given app group and database pointing to the sqlite database
+    ///
+    /// ```
+    /// import CoreData
+    ///
+    /// struct PersistenceController {
+    ///     static let shared = PersistenceController()
+    ///
+    ///     let container: NSPersistentCloudKitContainer
+    ///
+    ///     init() {
+    ///         let storeURL = URL.storeURL(for: "group.com.example.MyApp", databaseName: "MyApp")
+    ///         let storeDescription = NSPersistentStoreDescription(url: storeURL)
+    ///
+    ///         container = NSPersistentCloudKitContainer(name: "MyApp")
+    ///         container.persistentStoreDescriptions = [storeDescription]
+    ///         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+    ///             if let error = error as NSError? {
+    ///                 fatalError("Unresolved error \(error), \(error.userInfo)")
+    ///             }
+    ///         })
+    ///         container.viewContext.automaticallyMergesChangesFromParent = true
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// - Parameters:
+    ///   - appGroup: Your app group id like > `"group.com.example.MyApp"`
+    ///   - databaseName: Your app database name
+    ///
+    /// - Returns: URL for the given app group
+    static func storeURL(for appGroup: String, databaseName: String) -> URL {
+        guard let fileContainer = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else {
+            fatalError("Shared file container could not be created.")
+        }
+
+        return fileContainer.appendingPathComponent("\(databaseName).sqlite")
+    }
+}
+
 public extension URL {
     
     /// Converting regular url into query parameters
