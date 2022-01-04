@@ -184,6 +184,22 @@ public extension String {
 
 public extension String {
     
+    /// Helper method to extract all URLs from a given text
+    ///
+    /// - Returns: Array of string URLs or empty []
+    func extractAllURLs() -> [String] {
+        let input = self //"This is a test with the URL https://www.hackingwithswift.com to be detected."
+        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
+        var result: [String] = []
+        for match in matches {
+            guard let range = Range(match.range, in: input) else { continue }
+            let url = input[range]
+            result.append("\(url)")
+        }
+        return result
+    }
+    
     /// Replacing string with another string "aaa" => "ttt"
     ///
     /// - Parameters:
