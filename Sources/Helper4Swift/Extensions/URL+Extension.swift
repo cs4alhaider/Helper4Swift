@@ -8,7 +8,7 @@
 import Foundation
 
 // CoreData releated
-extension URL {
+public extension URL {
 
     /// Creates a store URL for the given app group and database pointing to the sqlite database
     ///

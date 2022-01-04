@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 13.0, *)
-extension Binding {
+public extension Binding {
     
     /// Get notified when the value changed
     /// 
