@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "Helper4Swift",
     platforms: [
-        .iOS(SupportedPlatform.IOSVersion.v13),
+        .iOS(SupportedPlatform.IOSVersion.v10),
         .tvOS(SupportedPlatform.TVOSVersion.v10),
         .watchOS(SupportedPlatform.WatchOSVersion.v3),
         .macOS(SupportedPlatform.MacOSVersion.v10_13)
