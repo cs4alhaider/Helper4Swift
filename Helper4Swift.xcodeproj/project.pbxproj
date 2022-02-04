@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		CA42E2DD27846E3A00F8DE31 /* Binding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA42E2DC27846E3A00F8DE31 /* Binding+Extension.swift */; };
+		CA93E09727AD7C13007B879B /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA93E09627AD7C13007B879B /* CLLocationCoordinate2D+Extension.swift */; };
 		OBJ_107 /* Helper4SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* Helper4SwiftTests.swift */; };
 		OBJ_108 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* XCTestManifests.swift */; };
 		OBJ_110 /* Helper4Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Helper4Swift::Helper4Swift::Product" /* Helper4Swift.framework */; };
@@ -80,6 +81,7 @@
 
 /* Begin PBXFileReference section */
 		CA42E2DC27846E3A00F8DE31 /* Binding+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extension.swift"; sourceTree = "<group>"; };
+		CA93E09627AD7C13007B879B /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
 		"Helper4Swift::Helper4Swift::Product" /* Helper4Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Helper4Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Helper4Swift::Helper4SwiftTests::Product" /* Helper4SwiftTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helper4SwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
@@ -175,7 +177,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -184,7 +186,6 @@
 				OBJ_48 /* Products */,
 				OBJ_51 /* README.md */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -241,6 +242,7 @@
 				OBJ_39 /* UIViewController+LocalAuthentication+Extension.swift */,
 				OBJ_40 /* URL+Extension.swift */,
 				CA42E2DC27846E3A00F8DE31 /* Binding+Extension.swift */,
+				CA93E09627AD7C13007B879B /* CLLocationCoordinate2D+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -311,7 +313,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_48 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -340,6 +342,7 @@
 			files = (
 				OBJ_57 /* Array+Extension.swift in Sources */,
 				OBJ_58 /* Bundle+Extension.swift in Sources */,
+				CA93E09727AD7C13007B879B /* CLLocationCoordinate2D+Extension.swift in Sources */,
 				OBJ_59 /* CALayer+Extension.swift in Sources */,
 				OBJ_60 /* Date+Extension.swift in Sources */,
 				OBJ_61 /* Dictionary+Extension.swift in Sources */,
