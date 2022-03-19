@@ -23,6 +23,7 @@
 /* Begin PBXBuildFile section */
 		CA42E2DD27846E3A00F8DE31 /* Binding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA42E2DC27846E3A00F8DE31 /* Binding+Extension.swift */; };
 		CA93E09727AD7C13007B879B /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA93E09627AD7C13007B879B /* CLLocationCoordinate2D+Extension.swift */; };
+		CB630A2D27E6227000571AAB /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB630A2C27E6227000571AAB /* Color+Extension.swift */; };
 		OBJ_107 /* Helper4SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* Helper4SwiftTests.swift */; };
 		OBJ_108 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* XCTestManifests.swift */; };
 		OBJ_110 /* Helper4Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Helper4Swift::Helper4Swift::Product" /* Helper4Swift.framework */; };
@@ -82,6 +83,7 @@
 /* Begin PBXFileReference section */
 		CA42E2DC27846E3A00F8DE31 /* Binding+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extension.swift"; sourceTree = "<group>"; };
 		CA93E09627AD7C13007B879B /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
+		CB630A2C27E6227000571AAB /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		"Helper4Swift::Helper4Swift::Product" /* Helper4Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Helper4Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Helper4Swift::Helper4SwiftTests::Product" /* Helper4SwiftTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helper4SwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				OBJ_40 /* URL+Extension.swift */,
 				CA42E2DC27846E3A00F8DE31 /* Binding+Extension.swift */,
 				CA93E09627AD7C13007B879B /* CLLocationCoordinate2D+Extension.swift */,
+				CB630A2C27E6227000571AAB /* Color+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				OBJ_72 /* UIColor+Extension.swift in Sources */,
 				OBJ_73 /* UIImage+Extension.swift in Sources */,
 				OBJ_74 /* UIImageView+Extension.swift in Sources */,
+				CB630A2D27E6227000571AAB /* Color+Extension.swift in Sources */,
 				OBJ_75 /* UIKeyboardType+Extension.swift in Sources */,
 				OBJ_76 /* UILabel+Extension.swift in Sources */,
 				OBJ_77 /* UINavigationController+Extension.swift in Sources */,
