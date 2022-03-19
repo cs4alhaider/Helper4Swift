@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum SortOrder {
+public enum SortOrder {
     case increasing, decreasing
 }
 
-extension Sequence {
+public extension Sequence {
     
     func sorted<Value: Comparable>(by keyPath: KeyPath<Self.Element, Value>, order: SortOrder = .increasing) -> [Self.Element] {
         switch order {
