@@ -68,11 +68,12 @@ public extension Date {
     /// https://developer.apple.com/documentation/foundation/relativedatetimeformatter
     func relativeTime(
         in locale: Locale = .current,
-        unitsStyle: RelativeDateTimeFormatter.UnitsStyle = .short
+        unitsStyle: RelativeDateTimeFormatter.UnitsStyle = .short,
+        relativeTo otherDate: Date = Date()
     ) -> String {
         let formatter = RelativeDateTimeFormatter()
         formatter.locale = locale
         formatter.unitsStyle = unitsStyle
-        return formatter.localizedString(for: self, relativeTo: Date())
+        return formatter.localizedString(for: self, relativeTo: otherDate)
     }
 }
