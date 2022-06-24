@@ -64,4 +64,15 @@ public extension Date {
         let time = Date()
         return time.timeIntervalSince(date)
     }
+    
+    /// https://developer.apple.com/documentation/foundation/relativedatetimeformatter
+    func relativeTime(
+        in locale: Locale = .current,
+        unitsStyle: RelativeDateTimeFormatter.UnitsStyle = .short
+    ) -> String {
+        let formatter = RelativeDateTimeFormatter()
+        formatter.locale = locale
+        formatter.unitsStyle = unitsStyle
+        return formatter.localizedString(for: self, relativeTo: Date())
+    }
 }
