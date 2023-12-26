@@ -37,7 +37,7 @@ public extension Color {
     }
 }
 
-@available(iOS 13.0, *)
+@available(iOS 14.0, *)
 public extension Color {
     // Convert Color to Hex String
     func toHexString() -> String {
