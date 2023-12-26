@@ -36,3 +36,43 @@ public extension Color {
         return (r, g, b, a)
     }
 }
+
+@available(iOS 13.0, *)
+public extension Color {
+    // Convert Color to Hex String
+    func toHexString() -> String {
+        let components = self.cgColor?.components
+        let r: CGFloat = components?[0] ?? 0
+        let g: CGFloat = components?[1] ?? 0
+        let b: CGFloat = components?[2] ?? 0
+
+        return String(format: "#%02lX%02lX%02lX", 
+                      lroundf(Float(r * 255)), 
+                      lroundf(Float(g * 255)), 
+                      lroundf(Float(b * 255)))
+    }
+
+    // Initialize Color from Hex String
+    init(hex: String) {
+        let hexString = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+        let scanner = Scanner(string: hexString)
+
+        if hexString.hasPrefix("#") {
+            scanner.currentIndex = hexString.index(after: hexString.startIndex)
+        }
+
+        var color: UInt64 = 0
+        scanner.scanHexInt64(&color)
+
+        let mask = 0x000000FF
+        let r = Int(color >> 16) & mask
+        let g = Int(color >> 8) & mask
+        let b = Int(color) & mask
+
+        let red   = CGFloat(r) / 255
+        let green = CGFloat(g) / 255
+        let blue  = CGFloat(b) / 255
+
+        self.init(red: red, green: green, blue: blue)
+    }
+}
