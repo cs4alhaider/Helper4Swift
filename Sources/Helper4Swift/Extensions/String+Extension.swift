@@ -341,3 +341,29 @@ public extension String {
         return compare(toVersion: targetVersion) != .orderedDescending
     }
 }
+
+public extension String {
+    // Initialize Color from Hex String
+    func toColor() -> Color {
+        let hex = self.trimmingCharacters(in: .whitespacesAndNewlines)
+        let scanner = Scanner(string: hex)
+
+        if hex.hasPrefix("#") {
+            scanner.currentIndex = hex.index(after: hex.startIndex)
+        }
+
+        var color: UInt64 = 0
+        scanner.scanHexInt64(&color)
+
+        let mask = 0x000000FF
+        let r = Int(color >> 16) & mask
+        let g = Int(color >> 8) & mask
+        let b = Int(color) & mask
+
+        let red   = CGFloat(r) / 255
+        let green = CGFloat(g) / 255
+        let blue  = CGFloat(b) / 255
+
+        return Color(red: red, green: green, blue: blue)
+    }
+}
