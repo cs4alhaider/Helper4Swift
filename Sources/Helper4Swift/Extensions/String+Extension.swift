@@ -6,6 +6,7 @@
 //  https://developer.apple.com/library/content/documentation/Xcode/Reference/xcode_markup_formatting_ref/
 
 import Foundation
+import SwiftUI
 
 #if canImport(Cocoa)
 import Cocoa
