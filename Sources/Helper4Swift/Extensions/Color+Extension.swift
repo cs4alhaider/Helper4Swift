@@ -39,17 +39,33 @@ public extension Color {
 
 @available(iOS 14.0, *)
 public extension Color {
-    // Convert Color to Hex String
-    func toHexString() -> String {
-        let components = self.cgColor?.components
-        let r: CGFloat = components?[0] ?? 0
-        let g: CGFloat = components?[1] ?? 0
-        let b: CGFloat = components?[2] ?? 0
+    
+    /// Converts a SwiftUI Color to a hexadecimal string representation.
+    ///
+    /// - Returns: A String representing the color in hexadecimal format.
+    ///   Returns nil if the color cannot be converted to RGB.
+    func toHexString() -> String? {
+        // Convert the Color to UIColor
+        let uiColor = UIColor(self)
         
-        return String(format: "#%02lX%02lX%02lX",
-                      lroundf(Float(r * 255)),
-                      lroundf(Float(g * 255)),
-                      lroundf(Float(b * 255)))
+        // Extract RGBA components from UIColor
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+
+        guard uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha) else {
+            // Return nil if unable to extract RGBA components
+            return nil
+        }
+
+        // Format the components as a hexadecimal string
+        return String(
+            format: "#%02lX%02lX%02lX",
+            lround(Double(red) * 255),
+            lround(Double(green) * 255),
+            lround(Double(blue) * 255)
+        )
     }
     
     // Initialize Color from Hex String
