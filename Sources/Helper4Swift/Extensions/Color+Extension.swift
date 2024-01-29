@@ -44,29 +44,29 @@ public extension Color {
     ///
     /// - Returns: A String representing the color in hexadecimal format.
     ///   Returns nil if the color cannot be converted to RGB.
-    func toHexString() -> String? {
-        // Convert the Color to UIColor
-        let uiColor = UIColor(self)
-        
-        // Extract RGBA components from UIColor
-        var red: CGFloat = 0
-        var green: CGFloat = 0
-        var blue: CGFloat = 0
-        var alpha: CGFloat = 0
-
-        guard uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha) else {
-            // Return nil if unable to extract RGBA components
-            return nil
-        }
-
-        // Format the components as a hexadecimal string
-        return String(
-            format: "#%02lX%02lX%02lX",
-            lround(Double(red) * 255),
-            lround(Double(green) * 255),
-            lround(Double(blue) * 255)
-        )
-    }
+//    func toHexString() -> String? {
+//        // Convert the Color to UIColor
+//        let uiColor = UIColor(self)
+//        
+//        // Extract RGBA components from UIColor
+//        var red: CGFloat = 0
+//        var green: CGFloat = 0
+//        var blue: CGFloat = 0
+//        var alpha: CGFloat = 0
+//
+//        guard uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha) else {
+//            // Return nil if unable to extract RGBA components
+//            return nil
+//        }
+//
+//        // Format the components as a hexadecimal string
+//        return String(
+//            format: "#%02lX%02lX%02lX",
+//            lround(Double(red) * 255),
+//            lround(Double(green) * 255),
+//            lround(Double(blue) * 255)
+//        )
+//    }
     
     // Initialize Color from Hex String
     init(hex: String) {
