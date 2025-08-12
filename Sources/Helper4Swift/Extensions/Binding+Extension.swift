@@ -18,7 +18,7 @@ public func ??<T>(lhs: Binding<Optional<T>>, rhs: T) -> Binding<T> {
 public extension Binding {
     
     /// Get notified when the value changed
-    /// 
+    ///
     /// - Parameter handler: your own logic
     ///
     /// - Returns: same value
@@ -91,18 +91,18 @@ extension Binding {
     public func contains<Element>(_ element: Element) -> Binding<Bool> where Value == Optional<Set<Element>> {
         return Binding<Bool>(get: { return self.wrappedValue?.contains(element) ?? false },
                              set: { present in
-                                if present {
-                                    self.wrappedValue = (self.wrappedValue ?? Set()).union([element])
-                                } else {
-                                    var current = self.wrappedValue
-                                    current?.remove(element)
-                                    if current?.isEmpty == true {
-                                        self.wrappedValue = nil
-                                    } else {
-                                        self.wrappedValue = current
-                                    }
-                                }
-                             })
+            if present {
+                self.wrappedValue = (self.wrappedValue ?? Set()).union([element])
+            } else {
+                var current = self.wrappedValue
+                current?.remove(element)
+                if current?.isEmpty == true {
+                    self.wrappedValue = nil
+                } else {
+                    self.wrappedValue = current
+                }
+            }
+        })
     }
 }
 
@@ -120,6 +120,46 @@ extension Binding where Value == Bool {
                        set: { self.wrappedValue = !$0 })
     }
     
+}
+
+extension Binding where Value == String {
+    
+    /// Creates a `Binding<Bool>` to determine if the current `Binding`'s string contains a specific substring.
+    /// - Parameter substring: The substring to check for containment in the string.
+    /// - Returns: A `Binding<Bool>` that is `true` if the string contains the substring, otherwise `false`.
+    /// - Usage:
+    /// ```
+    /// @State private var text: String = "Hello World"
+    /// let containsHello = $text.contains("Hello") // true if "Hello" is in the string
+    /// ```
+    public func contains(_ substring: String) -> Binding<Bool> {
+        return Binding<Bool>(get: { wrappedValue.contains(substring) },
+                             set: { newValue in
+            if newValue && !wrappedValue.contains(substring) {
+                wrappedValue.append(substring)
+            } else if !newValue {
+                wrappedValue = wrappedValue.replacingOccurrences(of: substring, with: "")
+            }
+        })
+    }
+    
+}
+
+extension SetAlgebra {
+    
+    /// Custom subscript to check and modify set membership using subscript syntax
+    public subscript(contains element: Element) -> Bool {
+        get {
+            return contains(element)
+        }
+        set {
+            if newValue {
+                insert(element)
+            } else {
+                remove(element)
+            }
+        }
+    }
 }
 
 extension Binding where Value: SetAlgebra {
