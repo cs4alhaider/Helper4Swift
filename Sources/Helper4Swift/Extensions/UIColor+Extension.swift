@@ -12,17 +12,19 @@ public extension UIColor {
     
     /// Allowing to use hex string
     ///
-    /// - Parameter hexString: hex string like "ffffff"
+    /// - Parameter hexString: hex string like "ffffff" or "#ffffff"
     convenience init(hexString: String) {
         
-        let hexString: String = (hexString as NSString).trimmingCharacters(in: .whitespacesAndNewlines)
-        let scanner = Scanner(string: hexString as String)
+        let hexString = hexString.trimmingCharacters(in: .whitespacesAndNewlines)
+        let scanner = Scanner(string: hexString)
         
+        // Skip the # if present
         if hexString.hasPrefix("#") {
-            scanner.scanLocation = 1
+            scanner.currentIndex = hexString.index(after: hexString.startIndex)
         }
-        var color: UInt32 = 0
-        scanner.scanHexInt32(&color)
+        
+        var color: UInt64 = 0
+        scanner.scanHexInt64(&color)
         
         let mask = 0x000000FF
         let rColor = Int(color >> 16) & mask
