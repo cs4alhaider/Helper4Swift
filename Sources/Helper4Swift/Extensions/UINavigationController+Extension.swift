@@ -33,7 +33,15 @@ public extension UINavigationController {
     func updateImageWithGradient(colors: [CGColor]) {
         
         let navBarHeight = navigationBar.frame.size.height
-        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        
+        // Get status bar height using modern API
+        let statusBarHeight: CGFloat
+        if #available(iOS 13.0, *) {
+            statusBarHeight = view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        } else {
+            statusBarHeight = UIApplication.shared.statusBarFrame.height
+        }
+        
         let heightAdjustment: CGFloat = 2
         let gradientHeight = navBarHeight + statusBarHeight + heightAdjustment
         
