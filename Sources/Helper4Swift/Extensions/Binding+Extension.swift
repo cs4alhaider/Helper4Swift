@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+public func ??<T>(lhs: Binding<Optional<T>>, rhs: T) -> Binding<T> {
+    Binding(
+        get: { lhs.wrappedValue ?? rhs },
+        set: { lhs.wrappedValue = $0 }
+    )
+}
+
 @available(iOS 13.0, *)
 public extension Binding {
     
@@ -155,7 +162,7 @@ private class Debouncer<Value> {
     func send(_ value: Value) {
         current?.cancel()
         let work = DispatchWorkItem(block: { self.sender(value) })
-        this.current = work
+        self.current = work
         DispatchQueue.main.asyncAfter(deadline: .now() + interval, execute: work)
     }
     
