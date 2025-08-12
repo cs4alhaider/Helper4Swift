@@ -5,9 +5,7 @@
 //  Created by Abdullah Alhaider on 12/08/2025.
 //
 
-import Foundation
 import Observation
-import SwiftUI
 
 /// An async sequence that observes changes to properties and emits new values when they change.
 /// This type enables reactive programming patterns with Swift's Observation framework.
